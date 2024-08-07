@@ -1,6 +1,6 @@
 
 #pragma once
-
+#include "Character.h"
 #include <string>
 
 using std::string;
@@ -12,7 +12,6 @@ class Player {
  int currHealthPoints;
  int maxHealthPoints;
  int coins;
- Job job;
  Character character;
 
 public:
