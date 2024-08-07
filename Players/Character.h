@@ -1,10 +1,11 @@
 #pragma once
 
+
 class Character {
-    string character;
+    std::string character;
 
 public:
-    Character(string character);
+    Character(std::string character);
 
     virtual void purchasesPotions();
 };
