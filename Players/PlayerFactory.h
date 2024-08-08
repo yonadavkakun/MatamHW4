@@ -10,5 +10,6 @@
 class PlayerFactory {
     //std::map<std::string, std::unique_ptr<Player>()> playersMap;
 public:
-    static std::unique_ptr<Player> createPlayer(const std::string &playerType);
+    static std::unique_ptr<Player> createPlayer(const std::string &playerName,
+        const std::string &playerJob, const std::string &playerCharacter);
 };

@@ -28,10 +28,12 @@ Balrog::Balrog() : extraPoints(0) {
 }
 
 Pack::Pack(int packSize) : packSize(packSize) {
-    for (int i=0; i < packSize; i++) {
+    for (int i = 0; i < packSize; i++) {
         string packMember;
         std::cin >> packMember;
         pack.push_back(EventFactory::createEvent(packMember));
     }
 }
+
+
 
