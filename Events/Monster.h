@@ -9,27 +9,27 @@ protected:
     int damage;
 
 public:
-    Monster();
+    Monster()=default;
 
     string getDescription() const override;
 
     void applyEvent() override;
 
-    ~Monster();
+    virtual ~Monster();
 };
 
 class Snail : public Monster {
 public:
     Snail();
 
-    ~Snail();
+    ~Snail()override=default;
 };
 
 class Slime : public Monster {
 public:
     Slime();
 
-    ~Slime();
+    ~Slime()override=default;
 };
 
 class Balrog : public Monster {
@@ -40,7 +40,7 @@ public:
 
     void applyEvent() override;
 
-    ~Balrog();
+    ~Balrog()override=default;
 };
 
 class Pack : public Monster {
@@ -52,5 +52,5 @@ public:
 
     void applyEvent() override;
 
-    ~Pack();
+    ~Pack()override;
 };
