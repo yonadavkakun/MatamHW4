@@ -7,6 +7,7 @@
 #include "../Players/Player.h"
 
 class Event {
+protected:
     string name;
 
 public:
@@ -15,42 +16,27 @@ public:
      *
      * @return - the description of the event
     */
-    virtual string getDescription() const =0;
+    virtual string getDescription() const;
 
     virtual void applyEvent() =0;
+
+    virtual ~Event() =0;
 };
 
-class SolarEclipse {
+class SolarEclipse : public Event {
 public:
     SolarEclipse();
+
+    void applyEvent() override;
+
+    ~SolarEclipse() = default;
 };
 
-class PotionsMerchant {
+class PotionsMerchant : public Event {
 public:
     PotionsMerchant();
-};
 
-class Snail {
-public:
-    Snail();
-};
+    void applyEvent() override;
 
-class Slime {
-public:
-    Slime();
-};
-
-class Balrog {
-    int extraPoints;
-
-public:
-    Balrog();
-};
-
-class Pack {
-    int packSize;
-    std::vector<std::unique_ptr<Event> > pack;
-
-public:
-    Pack(int packSize);
+    ~PotionsMerchant() = default;
 };

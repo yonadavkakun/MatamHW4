@@ -3,26 +3,32 @@
 
 
 class Monster : public Event {
+protected:
     int combatPower;
     int loot;
     int damage;
 
 public:
     Monster();
+
     string getDescription() const override;
+
     void applyEvent() override;
+
     ~Monster();
 };
 
 class Snail : public Monster {
 public:
     Snail();
+
     ~Snail();
 };
 
 class Slime : public Monster {
 public:
     Slime();
+
     ~Slime();
 };
 
@@ -31,9 +37,10 @@ class Balrog : public Monster {
 
 public:
     Balrog();
-    void applyEvent() override;
-    ~Balrog();
 
+    void applyEvent() override;
+
+    ~Balrog();
 };
 
 class Pack : public Monster {
@@ -42,6 +49,8 @@ class Pack : public Monster {
 
 public:
     Pack(int packSize);
+
     void applyEvent() override;
+
     ~Pack();
 };
