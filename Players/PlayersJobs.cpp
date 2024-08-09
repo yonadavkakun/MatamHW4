@@ -1,6 +1,38 @@
 #include "PlayersJobs.h"
 
-Warrior::Warrior(const std::string &playerName,
-        const std::string &playerJob, const std::string &playerCharacter) {
+#include <utility>
+
+//warrior
+
+Warrior::Warrior(const std::string &playerName, std::shared_ptr<Character> playerCharacter)
+    : Player(playerName, std::move(playerCharacter)) {
+    currHealthPoints += 50;
+    maxHealthPoints += 50;
 }
+
+string Warrior::getJob() const {
+    return "Warrior";
+}
+
+//archer
+
+Archer::Archer(const std::string &playerName, std::shared_ptr<Character> playerCharacter)
+    : Player(playerName, std::move(playerCharacter)) {
+    coins += 10;
+}
+
+string Archer::getJob() const {
+    return "Archer";
+}
+
+//magician
+
+Magician::Magician(const std::string &playerName, std::shared_ptr<Character> playerCharacter)
+    : Player(playerName, std::move(playerCharacter)) {
+}
+
+string Magician::getJob() const {
+    return "Magician";
+}
+
 

@@ -3,18 +3,21 @@
 
 class Warrior : public Player {
 public:
-    Warrior(const std::string &playerName,
-        const std::string &playerJob, const std::string &playerCharacter);
+    Warrior(const std::string &playerName, std::shared_ptr<Character> playerCharacter);
+
+    string getJob() const override;
 };
 
 class Archer : public Player {
 public:
-    Archer(const std::string &playerName,
-        const std::string &playerJob, const std::string &playerCharacter);
+    Archer(const std::string &playerName, std::shared_ptr<Character> playerCharacter);
+
+    string getJob() const override;
 };
 
 class Magician : public Player {
 public:
-    Magician(const std::string &playerName,
-        const std::string &playerJob, const std::string &playerCharacter);
+    Magician(const std::string &playerName, std::shared_ptr<Character> playerCharacter);
+
+    string getJob() const override;
 };
