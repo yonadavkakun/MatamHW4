@@ -10,5 +10,5 @@
 class EventFactory {
     //std::map<std::string, std::unique_ptr<Event>()> eventsMap;
 public:
-    static std::unique_ptr<Event> createEvent(const std::string &eventType);
+    static std::shared_ptr<Event> createEvent(const std::string &eventType);
 };

@@ -5,31 +5,23 @@
 #include "Monster.h"
 
 
-std::unique_ptr<Event> EventFactory::createEvent(const std::string &eventType) {
-    switch (eventType) {
-        case "SolarEclipse":
-            return std::make_unique<SolarEclipse>();
-            break;
-        case "PotionsMerchant":
-            return std::make_unique<PotionsMerchant>();
-            break;
-        case "Snail":
-            return std::make_unique<Snail>();
-            break;
-        case "Slime":
-            return std::make_unique<Slime>();
-            break;
-        case "Balrog":
-            return std::make_unique<Balrog>();
-            break;
-        case "Pack":
-            int size;
-            std::cin >> size;
-            return std::make_unique<Pack>(size);
-            break;
-        default:
-            //error
-            return nullptr;
-            break;
+std::shared_ptr<Event> EventFactory::createEvent(const std::string &eventType) {
+    if (eventType == "SolarEclipse") {
+        return std::make_shared<SolarEclipse>(eventType);
+    } else if (eventType == "PotionsMerchant") {
+        return std::make_shared<PotionsMerchant>(eventType);
+    } else if (eventType == "Snail") {
+        return std::make_shared<Snail>();
+    } else if (eventType == "Slime") {
+        return std::make_shared<Slime>();
+    } else if (eventType == "Balrog") {
+        return std::make_shared<Balrog>();
+    } else if (eventType == "Pack") {
+        int size;
+        std::cin >> size;
+        return std::make_shared<Pack>(size);
+    } else {
+        // error
+        return nullptr;
     }
 }
