@@ -20,12 +20,12 @@ public:
 
     virtual void applyEvent() =0;
 
-    virtual ~Event() =0;
+    Event(const string &eventName);
 };
 
 class SolarEclipse : public Event {
 public:
-    SolarEclipse();
+    SolarEclipse(const string &eventName);
 
     void applyEvent() override;
 
@@ -34,7 +34,7 @@ public:
 
 class PotionsMerchant : public Event {
 public:
-    PotionsMerchant();
+    PotionsMerchant(const string &eventName);
 
     void applyEvent() override;
 
