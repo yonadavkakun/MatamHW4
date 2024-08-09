@@ -9,13 +9,13 @@ protected:
     int damage;
 
 public:
-    Monster() = default;
+    Monster(const string &monsterName);
 
     string getDescription() const override;
 
     void applyEvent() override;
 
-    virtual ~Monster();
+    virtual ~Monster() = default;
 };
 
 class Snail : public Monster {
@@ -45,7 +45,7 @@ public:
 
 class Pack : public Monster {
     int packSize;
-    std::vector<std::unique_ptr<Event> > pack;
+    std::vector<std::shared_ptr<Event> > pack;
 
 public:
     Pack(int packSize);
