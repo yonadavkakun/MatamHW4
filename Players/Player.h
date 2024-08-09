@@ -1,20 +1,32 @@
 
 #pragma once
+#include <memory>
+
 #include "Character.h"
 #include <string>
 
 using std::string;
 
 class Player {
+protected:
  string name;
  int level;
  int force;
  int currHealthPoints;
  int maxHealthPoints;
  int coins;
- Character character;
+ std::shared_ptr<Character> character;
 
 public:
+ static const int MAX_HP = 100;
+ static const int MAX_LEVEL = 10;
+ static const int STARTING_LEVEL = 1;
+ static const int STARTING_FORCE = 5;
+ static const int STARTING_COINS = 10;
+
+ //c'tor
+ Player(const string &playerName, std::shared_ptr<Character> charType);
+
  /**
   * Gets the description of the player
   *
@@ -56,4 +68,19 @@ public:
   * @return - coins of the player
  */
  int getCoins() const;
+
+ /**
+  * Gets the job of the player as a string, pure virtual
+  *
+  * @return - job of the player
+ */
+ virtual string getJob() const =0;
+
+ /**
+ * Gets the character of the player as a string
+ *
+ * @return - character of the player
+*/
+ string getCharacter() const;
 };
+
