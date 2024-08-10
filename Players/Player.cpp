@@ -48,7 +48,7 @@ int Player::getCombatPower() const {
         return force + level;
 }
 
-void Player::winBattle(int loot) {
+void Player::wonBattle(int loot) {
         coins += loot;
         level++;
 }

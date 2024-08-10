@@ -13,6 +13,13 @@ string Monster::getDescription() const {
     return result;
 }
 
+void Monster::applyEvent(Player &player) {
+    if (combatPower < player.getCombatPower()) {
+        player.wonBattle(loot);
+    } else {
+        player.lostBattle(damage);
+    }
+}
 
 //snail
 Snail::Snail(): Monster("snail") {
@@ -37,6 +44,14 @@ Balrog::Balrog(): Monster("Balrog"), extraPoints(0) {
     damage = 9001;
 }
 
+void Balrog::applyEvent(Player &player) {
+    if (combatPower < player.getCombatPower()) {
+        player.wonBattle(loot);
+    } else {
+        player.lostBattle(damage);
+    }
+    extraPoints+=2;
+}
 
 //pack
 Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
@@ -44,6 +59,12 @@ Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
         string packMember;
         std::cin >> packMember;
         pack.push_back(EventFactory::createEvent(packMember));
+    }
+}
+
+void Pack::applyEvent(Player &player) {
+    for (std::vector<std::shared_ptr<Event> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+        it.operator*()->applyEvent(player);
     }
 }
 

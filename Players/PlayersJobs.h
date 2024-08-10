@@ -8,6 +8,8 @@ public:
     string getJob() const override;
 
     int getCombatPower() const override;
+
+    void wonBattle(int loot) override;
 };
 
 class Archer : public Player {

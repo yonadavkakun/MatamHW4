@@ -95,7 +95,7 @@ public:
 *
 *@param loot
 */
- virtual void winBattle(int loot);
+ virtual void wonBattle(int loot);
 
  /**
 * the player lost, he lost HP as the monster damage

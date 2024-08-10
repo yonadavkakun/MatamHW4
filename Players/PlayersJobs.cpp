@@ -18,6 +18,11 @@ int Warrior::getCombatPower() const {
     return 2 * force + level;
 }
 
+void Warrior::wonBattle(int loot) {
+    coins += loot;
+    currHealthPoints -= 10;
+}
+
 //archer
 
 Archer::Archer(const std::string &playerName, std::shared_ptr<Character> playerCharacter)
