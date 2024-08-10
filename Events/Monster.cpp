@@ -50,7 +50,7 @@ void Balrog::applyEvent(Player &player) {
     } else {
         player.lostBattle(damage);
     }
-    extraPoints+=2;
+    extraPoints += 2;
 }
 
 //pack

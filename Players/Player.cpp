@@ -61,8 +61,17 @@ void Player::solarEclipseEffect() {
         force--;
 }
 
+bool Player::operator<(const Player &other) const {
+        if (this->level != other.level)
+                return this->level < other.level;
+        if (this->coins != other.coins)
+                return this->coins < other.coins;
+        return this->name > other.name;
+}
 
+/*
 std::ostream &operator<<(std::ostream &os, const Player &player) {
         os << player.getDescription() << std::endl;
         return os;
 }
+*/

@@ -112,7 +112,14 @@ public:
 *
 *@param os, player
 */
- friend std::ostream &operator<<(std::ostream &os, const Player &player);
+ // friend std::ostream &operator<<(std::ostream &os, const Player &player);
+
+ /**
+* operator<, less than, return true if other is greater than player
+*
+*@param other
+*/
+ bool operator<(const Player &other) const;
 };
 
 
