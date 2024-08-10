@@ -8,7 +8,7 @@ class Character {
 public:
     Character(const std::string &characterType);
 
-    virtual void purchasesPotions();
+    //virtual void purchasesPotions();
 
     std::string getCharacter();
 
@@ -19,16 +19,16 @@ class Responsible : public Character {
 public:
     Responsible(const std::string &characterType);
 
-    void purchasesPotions() override;
+    //void purchasesPotions() override;
 
-    ~Responsible() override;
+    ~Responsible() override = default;
 };
 
 class RiskTaking : public Character {
 public:
     RiskTaking(const std::string &characterType);
 
-    void purchasesPotions() override;
+    //void purchasesPotions() override;
 
-    ~RiskTaking() override;
+    ~RiskTaking() override = default;
 };

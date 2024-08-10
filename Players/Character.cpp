@@ -12,6 +12,7 @@ std::string Character::getCharacter() {
 Responsible::Responsible(const std::string &characterType) : Character(characterType) {
 }
 
+
 RiskTaking::RiskTaking(const std::string &characterType) : Character(characterType) {
 }
 
