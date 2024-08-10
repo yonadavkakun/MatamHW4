@@ -13,24 +13,32 @@ string Monster::getDescription() const {
     return result;
 }
 
+
+//snail
 Snail::Snail(): Monster("snail") {
     combatPower = 5;
     loot = 2;
     damage = 10;
 }
 
+
+//slime
 Slime::Slime(): Monster("Slime") {
     combatPower = 12;
     loot = 5;
     damage = 25;
 }
 
+
+//balrog
 Balrog::Balrog(): Monster("Balrog"), extraPoints(0) {
     combatPower = 15;
     loot = 100;
     damage = 9001;
 }
 
+
+//pack
 Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
     for (int i = 0; i < packSize; i++) {
         string packMember;

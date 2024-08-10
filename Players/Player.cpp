@@ -57,7 +57,12 @@ void Player::lostBattle(int damage) {
         currHealthPoints -= damage;
 }
 
-std::ostream &operator<<(std::ostream& os, const Player &player) {
+void Player::solarEclipseEffect() {
+        force--;
+}
+
+
+std::ostream &operator<<(std::ostream &os, const Player &player) {
         os << player.getDescription() << std::endl;
         return os;
 }

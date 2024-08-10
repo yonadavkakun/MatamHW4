@@ -104,12 +104,15 @@ public:
 */
  virtual void lostBattle(int damage);
 
+
+ virtual void solarEclipseEffect();
+
  /**
 * operator<<, prints the player description
 *
 *@param os, player
 */
- friend std::ostream &operator<<(std::ostream& os, const Player &player);
+ friend std::ostream &operator<<(std::ostream &os, const Player &player);
 };
 
 

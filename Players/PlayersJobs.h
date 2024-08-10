@@ -22,4 +22,6 @@ public:
     Magician(const std::string &playerName, std::shared_ptr<Character> playerCharacter);
 
     string getJob() const override;
+
+    void solarEclipseEffect() override;
 };

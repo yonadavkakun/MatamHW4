@@ -18,7 +18,12 @@ public:
     */
     virtual string getDescription() const;
 
-    //virtual void applyEvent() =0;
+    /**
+     * applying the event on the player - pure virtual
+     *
+     * @param player
+    */
+    virtual void applyEvent(Player &player) =0;
 
     Event(const string &eventName);
 };
@@ -27,7 +32,7 @@ class SolarEclipse : public Event {
 public:
     SolarEclipse(const string &eventName);
 
-    //void applyEvent() override;
+    void applyEvent(Player &player) override;
 
     ~SolarEclipse() = default;
 };
@@ -36,7 +41,7 @@ class PotionsMerchant : public Event {
 public:
     PotionsMerchant(const string &eventName);
 
-    //void applyEvent() override;
+    void applyEvent(Player &player) override;
 
     ~PotionsMerchant() = default;
 };

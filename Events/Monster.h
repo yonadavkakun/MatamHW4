@@ -13,7 +13,7 @@ public:
 
     string getDescription() const override;
 
-    //void applyEvent() override;
+    void applyEvent(Player &player) override;
 
     virtual ~Monster() = default;
 };
@@ -38,7 +38,7 @@ class Balrog : public Monster {
 public:
     Balrog();
 
-    //void applyEvent() override;
+    void applyEvent(Player &player) override;
 
     ~Balrog() override = default;
 };
@@ -50,7 +50,7 @@ class Pack : public Monster {
 public:
     Pack(int packSize);
 
-    //void applyEvent() override;
+    void applyEvent(Player &player) override;
 
     ~Pack() override = default;
 };

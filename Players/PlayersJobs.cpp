@@ -39,4 +39,7 @@ string Magician::getJob() const {
     return "Magician";
 }
 
+void Magician::solarEclipseEffect() {
+    force++;
+}
 
