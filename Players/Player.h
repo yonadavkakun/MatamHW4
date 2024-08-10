@@ -82,5 +82,34 @@ public:
  * @return - character of the player
 */
  string getCharacter() const;
+
+ /**
+* Gets the CombatPower of the player as int
+*
+* @return - CombatPower of the player
+*/
+ virtual int getCombatPower() const;
+
+ /**
+* the player won, he gets the loot and level up
+*
+*@param loot
+*/
+ virtual void winBattle(int loot);
+
+ /**
+* the player lost, he lost HP as the monster damage
+*
+*@param damage
+*/
+ virtual void lostBattle(int damage);
+
+ /**
+* operator<<, prints the player description
+*
+*@param os, player
+*/
+ friend std::ostream &operator<<(std::ostream& os, const Player &player);
 };
+
 

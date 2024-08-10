@@ -1,5 +1,6 @@
 #include "Player.h"
 
+#include <ostream>
 #include <utility>
 
 Player::Player(const string &playerName, std::shared_ptr<Character> charType) : name(playerName),
@@ -41,4 +42,22 @@ int Player::getHealthPoints() const {
 
 string Player::getCharacter() const {
         return character->getCharacter();
+}
+
+int Player::getCombatPower() const {
+        return force + level;
+}
+
+void Player::winBattle(int loot) {
+        coins += loot;
+        level++;
+}
+
+void Player::lostBattle(int damage) {
+        currHealthPoints -= damage;
+}
+
+std::ostream &operator<<(std::ostream& os, const Player &player) {
+        os << player.getDescription() << std::endl;
+        return os;
 }

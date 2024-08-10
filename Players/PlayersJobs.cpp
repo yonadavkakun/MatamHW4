@@ -14,6 +14,10 @@ string Warrior::getJob() const {
     return "Warrior";
 }
 
+int Warrior::getCombatPower() const {
+    return 2 * force + level;
+}
+
 //archer
 
 Archer::Archer(const std::string &playerName, std::shared_ptr<Character> playerCharacter)
