@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include <memory>
+#include <algorithm>
 
 
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
@@ -50,13 +51,22 @@ void MatamStory::playRound() {
     printRoundStart();
 
     /*===== TODO: Play a turn for each player =====*/
-
+    for (std::vector<std::shared_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
+        playTurn(**it);
+    }
     /*=============================================*/
 
     printRoundEnd();
 
     printLeaderBoardMessage();
 
+    std::vector<std::shared_ptr<Player> > sortedPlayers = players;
+    std::sort(sortedPlayers.begin(), sortedPlayers.end());
+    unsigned int counter=0;
+    for (std::vector<std::shared_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
+        printLeaderBoardEntry(counter,**it);
+        counter++;
+    }
     /*===== TODO: Print leaderboard entry for each player using "printLeaderBoardEntry" =====*/
 
     /*=======================================================================================*/
