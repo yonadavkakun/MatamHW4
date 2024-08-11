@@ -13,7 +13,7 @@ public:
 
     string getDescription() const override;
 
-    void applyEvent(Player &player) override;
+    string applyEvent(Player &player) override;
 
     int getLoot() const override;
 
@@ -42,7 +42,7 @@ class Balrog : public Monster {
 public:
     Balrog();
 
-    void applyEvent(Player &player) override;
+    string applyEvent(Player &player) override;
 
     void postBattle() override;
 
@@ -56,7 +56,9 @@ class Pack : public Monster {
 public:
     Pack(int packSize);
 
-    void applyEvent(Player &player) override;
+    string applyEvent(Player &player) override;
+
+    string getDescription() const override;
 
     ~Pack() override = default;
 };

@@ -13,11 +13,13 @@ string Monster::getDescription() const {
     return result;
 }
 
-void Monster::applyEvent(Player &player) {
+string Monster::applyEvent(Player &player) {
     if (combatPower < player.getCombatPower()) {
         player.wonBattle(*this);
+        return getEncounterWonMessage(player, getLoot());
     } else {
         player.lostBattle(*this);
+        return getEncounterLostMessage(player, getDamage());
     }
 }
 
@@ -56,11 +58,13 @@ Balrog::Balrog(): Monster("Balrog") {
     damage = 9001;
 }
 
-void Balrog::applyEvent(Player &player) {
+string Balrog::applyEvent(Player &player) {
     if (combatPower < player.getCombatPower()) {
         player.wonBattle(*this);
+        return getEncounterWonMessage(player, getLoot());
     } else {
         player.lostBattle(*this);
+        return getEncounterLostMessage(player, getDamage());
     }
     combatPower += 2;
 }
@@ -84,7 +88,15 @@ Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
     }
 }
 
-void Pack::applyEvent(Player &player) {
+string Pack::getDescription() const {
+    string result = name + " of " + std::to_string(packSize) + " members (power " + std::to_string(combatPower) + ", "
+                    + "loot " + std::to_string(loot)
+                    + ", " + "damage " + std::to_string(damage) + ")";
+    return result;
+}
+
+
+string Pack::applyEvent(Player &player) {
     combatPower = 0;
     loot = 0;
     damage = 0;
@@ -96,11 +108,13 @@ void Pack::applyEvent(Player &player) {
     }
     if (combatPower < player.getCombatPower()) {
         player.wonBattle(*this);
+        return getEncounterWonMessage(player, getLoot());
     } else {
         player.lostBattle(*this);
+        return getEncounterLostMessage(player, getDamage());
     }
-
 }
+
 
 
 
