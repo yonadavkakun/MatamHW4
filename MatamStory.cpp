@@ -42,9 +42,7 @@ void MatamStory::playTurn(Player &player) {
     */
     currEvent = events[m_turnIndex % events.size()];
     printTurnDetails(m_turnIndex, player, currEvent.operator*());
-    currEvent.operator*().applyEvent(player);
-
-
+    printTurnOutcome(currEvent.operator*().applyEvent(player));
     m_turnIndex++;
 }
 
