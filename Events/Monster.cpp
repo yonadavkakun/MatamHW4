@@ -81,7 +81,6 @@ Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();
-        it.operator*()->postBattle();
     }
 }
 
@@ -93,12 +92,14 @@ void Pack::applyEvent(Player &player) {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();
+        it.operator*()->postBattle();
     }
     if (combatPower < player.getCombatPower()) {
         player.wonBattle(*this);
     } else {
         player.lostBattle(*this);
     }
+
 }
 
 
