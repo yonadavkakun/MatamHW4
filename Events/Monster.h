@@ -13,7 +13,7 @@ public:
 
     string getDescription() const override;
 
-    string applyEvent(Player &player) override;
+    virtual string applyEvent(Player &player) override;
 
     int getLoot() const override;
 
