@@ -3,6 +3,8 @@
 #include <ostream>
 #include <utility>
 
+#include "../Events/Monster.h"
+
 Player::Player(const string &playerName, std::shared_ptr<Character> charType) : name(playerName),
         level(STARTING_LEVEL),
         force(STARTING_FORCE),
@@ -48,13 +50,13 @@ int Player::getCombatPower() const {
         return force + level;
 }
 
-void Player::wonBattle(int loot) {
-        coins += loot;
+void Player::wonBattle(const Monster &monsterType) {
+        coins += monsterType.getLoot();
         level++;
 }
 
-void Player::lostBattle(int damage) {
-        currHealthPoints -= damage;
+void Player::lostBattle(const Monster &monsterType) {
+        currHealthPoints -= monsterType.getDamage();
 }
 
 void Player::solarEclipseEffect() {

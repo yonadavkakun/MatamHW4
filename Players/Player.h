@@ -5,6 +5,7 @@
 #include "Character.h"
 #include <string>
 
+class Monster;
 using std::string;
 
 class Player {
@@ -93,16 +94,16 @@ public:
  /**
 * the player won, he gets the loot and level up
 *
-*@param loot
+*@param monsterType
 */
- virtual void wonBattle(int loot);
+ virtual void wonBattle(const Monster &monsterType);
 
  /**
 * the player lost, he lost HP as the monster damage
 *
-*@param damage
+*@param monsterType
 */
- virtual void lostBattle(int damage);
+ virtual void lostBattle(const Monster &monsterType);
 
 
  virtual void solarEclipseEffect();

@@ -15,10 +15,22 @@ string Monster::getDescription() const {
 
 void Monster::applyEvent(Player &player) {
     if (combatPower < player.getCombatPower()) {
-        player.wonBattle(loot);
+        player.wonBattle(*this);
     } else {
-        player.lostBattle(damage);
+        player.lostBattle(*this);
     }
+}
+
+int Monster::getDamage() const {
+    return damage;
+}
+
+int Monster::getLoot() const {
+    return loot;
+}
+
+int Monster::getCombatPower() const {
+    return combatPower;
 }
 
 //snail
@@ -38,7 +50,7 @@ Slime::Slime(): Monster("Slime") {
 
 
 //balrog
-Balrog::Balrog(): Monster("Balrog"), extraPoints(0) {
+Balrog::Balrog(): Monster("Balrog") {
     combatPower = 15;
     loot = 100;
     damage = 9001;
@@ -46,12 +58,17 @@ Balrog::Balrog(): Monster("Balrog"), extraPoints(0) {
 
 void Balrog::applyEvent(Player &player) {
     if (combatPower < player.getCombatPower()) {
-        player.wonBattle(loot);
+        player.wonBattle(*this);
     } else {
-        player.lostBattle(damage);
+        player.lostBattle(*this);
     }
-    extraPoints += 2;
+    combatPower += 2;
 }
+
+void Balrog::postBattle() {
+    combatPower += 2;
+}
+
 
 //pack
 Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
@@ -60,11 +77,27 @@ Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
         std::cin >> packMember;
         pack.push_back(EventFactory::createEvent(packMember));
     }
+    for (std::vector<std::shared_ptr<Event> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+        combatPower += it.operator*()->getCombatPower();
+        loot += it.operator*()->getLoot();
+        damage += it.operator*()->getDamage();
+        it.operator*()->postBattle();
+    }
 }
 
 void Pack::applyEvent(Player &player) {
+    combatPower = 0;
+    loot = 0;
+    damage = 0;
     for (std::vector<std::shared_ptr<Event> >::iterator it = pack.begin(); it != pack.end(); ++it) {
-        it.operator*()->applyEvent(player);
+        combatPower += it.operator*()->getCombatPower();
+        loot += it.operator*()->getLoot();
+        damage += it.operator*()->getDamage();
+    }
+    if (combatPower < player.getCombatPower()) {
+        player.wonBattle(*this);
+    } else {
+        player.lostBattle(*this);
     }
 }
 

@@ -15,6 +15,12 @@ public:
 
     void applyEvent(Player &player) override;
 
+    int getLoot() const override;
+
+    int getDamage() const override;
+
+    int getCombatPower() const override;
+
     virtual ~Monster() = default;
 };
 
@@ -33,12 +39,16 @@ public:
 };
 
 class Balrog : public Monster {
-    int extraPoints;
-
 public:
     Balrog();
 
     void applyEvent(Player &player) override;
+
+    int getCombatPower() const override;
+
+    int getBalrogPower();
+
+    void postBattle() override;
 
     ~Balrog() override = default;
 };

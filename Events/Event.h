@@ -25,6 +25,35 @@ public:
     */
     virtual void applyEvent(Player &player) =0;
 
+    /**
+    * while not Monster throw exception
+    *
+    */
+    virtual int getCombatPower() const;
+
+    /**
+    * while not Monster throw exception
+    *
+    */
+    virtual int getLoot() const;
+
+    /**
+    * while not Monster throw exception
+    *
+    */
+    virtual int getDamage() const;
+
+    /**
+        * while not Monster throw exception
+        *
+        */
+    virtual void postBattle() =0;
+
+    /**
+    * c'tor
+    *
+    *@param eventName
+    */
     Event(const string &eventName);
 };
 
