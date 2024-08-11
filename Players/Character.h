@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+class Player;
+
 
 class Character {
     std::string character;
@@ -8,7 +10,7 @@ class Character {
 public:
     Character(const std::string &characterType);
 
-    //virtual void purchasesPotions();
+    virtual std::string potionPurchase(Player &player) =0;
 
     std::string getCharacter();
 
@@ -19,7 +21,7 @@ class Responsible : public Character {
 public:
     Responsible(const std::string &characterType);
 
-    //void purchasesPotions() override;
+    std::string potionPurchase(Player &player) override;
 
     ~Responsible() override = default;
 };
@@ -28,7 +30,7 @@ class RiskTaking : public Character {
 public:
     RiskTaking(const std::string &characterType);
 
-    //void purchasesPotions() override;
+    std::string potionPurchase(Player &player) override;
 
     ~RiskTaking() override = default;
 };

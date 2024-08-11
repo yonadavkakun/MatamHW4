@@ -44,10 +44,6 @@ public:
 
     void applyEvent(Player &player) override;
 
-    int getCombatPower() const override;
-
-    int getBalrogPower();
-
     void postBattle() override;
 
     ~Balrog() override = default;

@@ -1,5 +1,4 @@
 #include "Player.h"
-
 #include <ostream>
 #include <utility>
 
@@ -8,7 +7,7 @@
 Player::Player(const string &playerName, std::shared_ptr<Character> charType) : name(playerName),
         level(STARTING_LEVEL),
         force(STARTING_FORCE),
-        currHealthPoints(STARTING_FORCE),
+        currHealthPoints(MAX_HP),
         maxHealthPoints(MAX_HP),
         coins(STARTING_COINS),
         character(std::move(charType)) {
@@ -42,9 +41,19 @@ int Player::getHealthPoints() const {
         return currHealthPoints;
 }
 
+int Player::getMaxHealthPoints() const {
+        return maxHealthPoints;
+}
+
 string Player::getCharacter() const {
         return character->getCharacter();
 }
+
+void Player::buySinglePotion() {
+        coins -= 5;
+        currHealthPoints += 10;
+}
+
 
 int Player::getCombatPower() const {
         return force + level;
@@ -59,8 +68,9 @@ void Player::lostBattle(const Monster &monsterType) {
         currHealthPoints -= monsterType.getDamage();
 }
 
-void Player::solarEclipseEffect() {
+string Player::solarEclipseEffect() {
         force--;
+        return getSolarEclipseMessage(*this, -1);
 }
 
 bool Player::operator<(const Player &other) const {
@@ -77,3 +87,8 @@ std::ostream &operator<<(std::ostream &os, const Player &player) {
         return os;
 }
 */
+
+string Player::potionPurchase() {
+        return character->potionPurchase(*this);
+}
+

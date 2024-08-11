@@ -22,16 +22,27 @@ int Event::getCombatPower() const {
     throw std::runtime_error("trying to add nonMonster to pack");
 }
 
+void Event::postBattle() {
+    return;
+}
+
+
 //SolarEclipse
 SolarEclipse::SolarEclipse(const string &eventName): Event(eventName) {
     name = "SolarEclipse";
 }
 
-void SolarEclipse::applyEvent(Player &player) {
-    player.solarEclipseEffect();
+string SolarEclipse::applyEvent(Player &player) {
+    return player.solarEclipseEffect();
 }
 
 //PotionsMerchant
 PotionsMerchant::PotionsMerchant(const string &eventName) : Event(eventName) {
     name = "PotionsMerchant";
 }
+
+string PotionsMerchant::applyEvent(Player &player) {
+    return player.potionPurchase();
+}
+
+

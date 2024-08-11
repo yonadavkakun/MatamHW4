@@ -2,6 +2,8 @@
 
 #include <utility>
 
+#include "../Events/Monster.h"
+
 //warrior
 
 Warrior::Warrior(const std::string &playerName, std::shared_ptr<Character> playerCharacter)
@@ -18,8 +20,8 @@ int Warrior::getCombatPower() const {
     return 2 * force + level;
 }
 
-void Warrior::wonBattle(int loot) {
-    coins += loot;
+void Warrior::wonBattle(const Monster &monsterType) {
+    coins += monsterType.getLoot();
     currHealthPoints -= 10;
 }
 
@@ -44,7 +46,8 @@ string Magician::getJob() const {
     return "Magician";
 }
 
-void Magician::solarEclipseEffect() {
+string Magician::solarEclipseEffect() {
     force++;
+    return getSolarEclipseMessage(*this, 1);
 }
 

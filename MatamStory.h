@@ -5,15 +5,20 @@
 
 #include "Players/Player.h"
 #include "Events/Event.h"
-
+#include "Players/Character.h"
+#include "Players/PlayersJobs.h"
+#include "Events/Monster.h"
+#include "Utilities.h"
+#include "Events/EventFactory.h"
+#include "Players/PlayerFactory.h"
 
 class MatamStory {
 private:
  unsigned int m_turnIndex;
  std::vector<std::shared_ptr<Event> > events;
  std::vector<std::shared_ptr<Player> > players;
- std::unique_ptr<Event> currEvent;
- std::unique_ptr<Player> currPlayer;
+ std::shared_ptr<Event> currEvent;
+ std::shared_ptr<Player> currPlayer;
  /**
   * Playes a single turn for a player
   *

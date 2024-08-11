@@ -5,13 +5,6 @@
 #include <memory>
 
 
-#include "Events/Event.h"
-#include "Events/Monster.h"
-#include "Utilities.h"
-#include "Events/EventFactory.h"
-#include "Players/PlayerFactory.h"
-
-
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
     /*===== TODO: Open and read events file =====*/
     string eventInput;
@@ -47,6 +40,10 @@ void MatamStory::playTurn(Player &player) {
      * 3. Play the event
      * 4. Print the turn outcome with "printTurnOutcome"
     */
+    currEvent = events[m_turnIndex % events.size()];
+    printTurnDetails(m_turnIndex, player, currEvent.operator*());
+    currEvent.operator*().applyEvent(player);
+
 
     m_turnIndex++;
 }

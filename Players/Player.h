@@ -1,12 +1,13 @@
 
 #pragma once
 #include <memory>
-
+#include "../Utilities.h"
 #include "Character.h"
 #include <string>
 
 class Monster;
 using std::string;
+
 
 class Player {
 protected:
@@ -27,6 +28,7 @@ public:
 
  //c'tor
  Player(const string &playerName, std::shared_ptr<Character> charType);
+
 
  /**
   * Gets the description of the player
@@ -64,6 +66,13 @@ public:
  int getHealthPoints() const;
 
  /**
+  * Gets the Max health points of the player
+  *
+  * @return - max health points of the player
+ */
+ int getMaxHealthPoints() const;
+
+ /**
   * Gets the amount of coins the player has
   *
   * @return - coins of the player
@@ -83,6 +92,12 @@ public:
  * @return - character of the player
 */
  string getCharacter() const;
+
+ /**
+* buy a potion for the player, 5 coins for 10 HP
+*
+*/
+ void buySinglePotion();
 
  /**
 * Gets the CombatPower of the player as int
@@ -106,7 +121,7 @@ public:
  virtual void lostBattle(const Monster &monsterType);
 
 
- virtual void solarEclipseEffect();
+ virtual string solarEclipseEffect();
 
  /**
 * operator<<, prints the player description
@@ -121,6 +136,8 @@ public:
 *@param other
 */
  bool operator<(const Player &other) const;
+
+ string potionPurchase();
 };
 
 

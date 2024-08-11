@@ -23,7 +23,7 @@ public:
      *
      * @param player
     */
-    virtual void applyEvent(Player &player) =0;
+    virtual string applyEvent(Player &player) =0;
 
     /**
     * while not Monster throw exception
@@ -47,7 +47,7 @@ public:
         * while not Monster throw exception
         *
         */
-    virtual void postBattle() =0;
+    virtual void postBattle();
 
     /**
     * c'tor
@@ -55,22 +55,24 @@ public:
     *@param eventName
     */
     Event(const string &eventName);
+
+    virtual ~Event() = default;
 };
 
 class SolarEclipse : public Event {
 public:
     SolarEclipse(const string &eventName);
 
-    void applyEvent(Player &player) override;
+    string applyEvent(Player &player) override;
 
-    ~SolarEclipse() = default;
+    ~SolarEclipse() override = default;
 };
 
 class PotionsMerchant : public Event {
 public:
     PotionsMerchant(const string &eventName);
 
-    void applyEvent(Player &player) override;
+    string applyEvent(Player &player) override;
 
-    ~PotionsMerchant() = default;
+    ~PotionsMerchant() override = default;
 };

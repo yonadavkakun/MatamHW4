@@ -9,7 +9,7 @@ public:
 
     int getCombatPower() const override;
 
-    void wonBattle(int loot) override;
+    void wonBattle(const Monster &monsterType) override;
 };
 
 class Archer : public Player {
@@ -25,5 +25,5 @@ public:
 
     string getJob() const override;
 
-    void solarEclipseEffect() override;
+    string solarEclipseEffect() override;
 };
