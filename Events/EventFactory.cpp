@@ -1,27 +1,19 @@
-
 #include "EventFactory.h"
-#include <iostream>
-#include "Event.h"
-#include "Monster.h"
-
 
 std::shared_ptr<Event> EventFactory::createEvent(const std::string &eventType) {
-    if (eventType == "SolarEclipse") {
-        return std::make_shared<SolarEclipse>(eventType);
-    } else if (eventType == "PotionsMerchant") {
-        return std::make_shared<PotionsMerchant>(eventType);
-    } else if (eventType == "Snail") {
-        return std::make_shared<Snail>();
-    } else if (eventType == "Slime") {
-        return std::make_shared<Slime>();
-    } else if (eventType == "Balrog") {
-        return std::make_shared<Balrog>();
-    } else if (eventType == "Pack") {
-        int size;
-        std::cin >> size;
-        return std::make_shared<Pack>(size);
-    } else {
-        // error
-        return nullptr;
+    const static std::map<std::string, EventCreator> EventMap = {
+        {string("SolarEclipse"), [&]() { return std::make_shared<SolarEclipse>(eventType); }},
+        {string("PotionsMerchant"), [&]() { return std::make_shared<PotionsMerchant>(eventType); }},
+        {string("Snail"), [&]() { return MonsterFactory::createMonster(eventType); }},
+        {string("Slime"), [&]() { return MonsterFactory::createMonster(eventType); }},
+        {string("Balrog"), [&]() { return MonsterFactory::createMonster(eventType); }},
+        //{string("Pack"), [&]() { return MonsterFactory::createMonster(eventType); }},
+    };
+
+    auto it = EventMap.find(eventType);
+    if (it != EventMap.end()) {
+        return it->second();
     }
+    throw std::runtime_error("Invalid Events File");
 }
+
