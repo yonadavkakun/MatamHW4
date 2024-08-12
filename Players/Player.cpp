@@ -1,36 +1,43 @@
 #include "Player.h"
+
+#include <iostream>
 #include <ostream>
 #include <utility>
+#include "../Utilities.h"
 
-#include "../Events/Monster.h"
 
-Player::Player(const string &playerName, std::shared_ptr<Character> charType) : name(playerName),
-        level(STARTING_LEVEL),
-        force(STARTING_FORCE),
-        currHealthPoints(MAX_HP),
-        maxHealthPoints(MAX_HP),
-        coins(STARTING_COINS),
-        character(std::move(charType)) {
+Player::Player(const string &playerName,
+               std::shared_ptr<Stats> playerStats,
+               std::shared_ptr<Job> jobType,
+               std::shared_ptr<Character> charType): name(playerName),
+                                                     stats(playerStats),
+                                                     job(jobType),
+                                                     character(charType) {
 }
 
 int Player::getCoins() const {
-        return coins;
+        return stats->getCoins();
 }
 
+string Player::getJob() const {
+        return job->getJob();
+}
+
+
 string Player::getDescription() const {
-        string result = name + ", " + this->getJob() + " with "
-                        + this->getCharacter() + "character"
-                        + "(level " + std::to_string(this->getLevel()) + ", force"
-                        + std::to_string(this->getForce()) + ")";
+        string result = name + ", " + getJob() + " with "
+                        + getCharacter() + " character "
+                        + "(level " + std::to_string(getLevel()) + ", force "
+                        + std::to_string(getForce()) + ")";
         return result;
 }
 
 int Player::getForce() const {
-        return force;
+        return stats->getForce();
 }
 
 int Player::getLevel() const {
-        return level;
+        return stats->getLevel();
 }
 
 string Player::getName() const {
@@ -38,11 +45,11 @@ string Player::getName() const {
 }
 
 int Player::getHealthPoints() const {
-        return currHealthPoints;
+        return stats->getHealthPoints();
 }
 
 int Player::getMaxHealthPoints() const {
-        return maxHealthPoints;
+        return stats->getMaxHealthPoints();
 }
 
 string Player::getCharacter() const {
@@ -50,35 +57,36 @@ string Player::getCharacter() const {
 }
 
 void Player::buySinglePotion() {
-        coins -= 5;
-        currHealthPoints += 10;
+        stats->setCoins(-5);
+        stats->setHealthPoints(10);
 }
 
 
 int Player::getCombatPower() const {
-        return force + level;
+        return job->getCombatPower(stats);
 }
 
-void Player::wonBattle(const Monster &monsterType) {
-        coins += monsterType.getLoot();
-        level++;
+void Player::wonBattle(int loot) {
+        job->wonBattle(loot, stats);
 }
 
-void Player::lostBattle(const Monster &monsterType) {
-        currHealthPoints -= monsterType.getDamage();
+void Player::lostBattle(int damage) {
+        job->lostBattle(damage, stats);
 }
 
 string Player::solarEclipseEffect() {
-        force--;
+        job->solarEclipseEffect(stats);
         return getSolarEclipseMessage(*this, -1);
 }
 
 bool Player::operator<(const Player &other) const {
-        if (this->level != other.level)
-                return this->level < other.level;
-        if (this->coins != other.coins)
-                return this->coins < other.coins;
-        return this->name > other.name;
+        if (stats->getLevel() != other.stats->getLevel()) {
+                return stats->getLevel() > other.stats->getLevel();
+        }
+        if (stats->getCoins() != other.stats->getCoins()) {
+                return stats->getCoins() > other.stats->getCoins();
+        }
+        return this->name < other.name;
 }
 
 /*

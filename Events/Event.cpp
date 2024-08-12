@@ -22,10 +22,6 @@ int Event::getCombatPower() const {
     throw std::runtime_error("trying to add nonMonster to pack");
 }
 
-void Event::postBattle() {
-    return;
-}
-
 
 //SolarEclipse
 SolarEclipse::SolarEclipse(const string &eventName): Event(eventName) {

@@ -1,13 +1,14 @@
 # include "Monster.h"
 #include "EventFactory.h"
 #include <iostream>
+#include "../Utilities.h"
 
 Monster::Monster(const string &monsterName) : Event(monsterName) {
 }
 
 
 string Monster::getDescription() const {
-    string result = name + "(power " + std::to_string(combatPower) + ", "
+    string result = name + " (power " + std::to_string(combatPower) + ", "
                     + "loot " + std::to_string(loot)
                     + ", " + "damage " + std::to_string(damage) + ")";
     return result;
@@ -15,10 +16,10 @@ string Monster::getDescription() const {
 
 string Monster::applyEvent(Player &player) {
     if (combatPower < player.getCombatPower()) {
-        player.wonBattle(*this);
+        player.wonBattle(getLoot());
         return getEncounterWonMessage(player, getLoot());
     } else {
-        player.lostBattle(*this);
+        player.lostBattle(getDamage());
         return getEncounterLostMessage(player, getDamage());
     }
 }
@@ -35,8 +36,12 @@ int Monster::getCombatPower() const {
     return combatPower;
 }
 
+void Monster::postBattle() {
+    return;
+}
+
 //snail
-Snail::Snail(): Monster("snail") {
+Snail::Snail(): Monster("Snail") {
     combatPower = 5;
     loot = 2;
     damage = 10;
@@ -60,13 +65,14 @@ Balrog::Balrog(): Monster("Balrog") {
 
 string Balrog::applyEvent(Player &player) {
     if (combatPower < player.getCombatPower()) {
-        player.wonBattle(*this);
+        player.wonBattle(getLoot());
+        combatPower += 2;
         return getEncounterWonMessage(player, getLoot());
     } else {
-        player.lostBattle(*this);
+        player.lostBattle(getDamage());
+        combatPower += 2;
         return getEncounterLostMessage(player, getDamage());
     }
-    combatPower += 2;
 }
 
 void Balrog::postBattle() {
@@ -75,13 +81,14 @@ void Balrog::postBattle() {
 
 
 //pack
-Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
+Pack::Pack(std::istream &eventsStream) : Monster("Pack") {
+    eventsStream >> packSize;
     for (int i = 0; i < packSize; i++) {
         string packMember;
-        std::cin >> packMember;
-        pack.push_back(EventFactory::createEvent(packMember));
+        eventsStream >> packMember;
+        pack.push_back(MonsterFactory::createMonster(packMember));
     }
-    for (std::vector<std::shared_ptr<Event> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();
@@ -100,17 +107,17 @@ string Pack::applyEvent(Player &player) {
     combatPower = 0;
     loot = 0;
     damage = 0;
-    for (std::vector<std::shared_ptr<Event> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();
         it.operator*()->postBattle();
     }
     if (combatPower < player.getCombatPower()) {
-        player.wonBattle(*this);
+        player.wonBattle(getLoot());
         return getEncounterWonMessage(player, getLoot());
     } else {
-        player.lostBattle(*this);
+        player.lostBattle(getDamage());
         return getEncounterLostMessage(player, getDamage());
     }
 }

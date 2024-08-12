@@ -4,19 +4,23 @@
 #include <map>
 #include <memory>
 #include <algorithm>
+#include <memory>
+#include <memory>
+
+#include "Utilities.h"
+#include "Events/EventFactory.h"
 
 
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
     /*===== TODO: Open and read events file =====*/
     string eventInput;
     while (eventsStream >> eventInput) {
-        events.push_back(EventFactory::createEvent(eventInput));
+        if (eventInput == "Pack") {
+            events.push_back(std::make_shared<Pack>(eventsStream));
+        } else {
+            events.push_back(EventFactory::createEvent(eventInput));
+        }
     }
-    for (std::vector<std::shared_ptr<Event> >::iterator it = events.begin(); it != events.end(); ++it) {
-        std::cout << it.operator*()->getDescription() << std::endl;
-    }
-
-
     /*==========================================*/
     /*===== TODO: Open and Read players file =====*/
     string playerName;
@@ -41,7 +45,7 @@ void MatamStory::playTurn(Player &player) {
      * 3. Play the event
      * 4. Print the turn outcome with "printTurnOutcome"
     */
-    currEvent = events[m_turnIndex % events.size()];
+    currEvent = events[(m_turnIndex - 1) % events.size()];
     printTurnDetails(m_turnIndex, player, currEvent.operator*());
     printTurnOutcome(currEvent.operator*().applyEvent(player));
     m_turnIndex++;
@@ -52,7 +56,9 @@ void MatamStory::playRound() {
 
     /*===== TODO: Play a turn for each player =====*/
     for (std::vector<std::shared_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
-        playTurn(**it);
+        if (it.operator*()->getHealthPoints() != 0) {
+            playTurn(**it);
+        }
     }
     /*=============================================*/
 
@@ -61,8 +67,11 @@ void MatamStory::playRound() {
     printLeaderBoardMessage();
 
     std::vector<std::shared_ptr<Player> > sortedPlayers = players;
-    std::sort(sortedPlayers.begin(), sortedPlayers.end());
-    unsigned int counter = 0;
+    std::sort(sortedPlayers.begin(), sortedPlayers.end(),
+              [](const std::shared_ptr<Player> &a, const std::shared_ptr<Player> &b) {
+                  return *a < *b;
+              });
+    unsigned int counter = 1;
     for (std::vector<std::shared_ptr<Player> >::iterator it = sortedPlayers.begin(); it != sortedPlayers.end(); ++it) {
         printLeaderBoardEntry(counter, **it);
         counter++;
@@ -91,7 +100,7 @@ bool MatamStory::isGameOver() const {
                                                   return *a < *b;
                                               });
         printGameOver();
-        printWinner(*maxPlayerIter);
+        printWinner(**maxPlayerIter);
         return true;
     } else if (allPlayersHealthZero) {
         printGameOver();
@@ -106,8 +115,10 @@ bool MatamStory::isGameOver() const {
 void MatamStory::play() {
     printStartMessage();
     /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
+    unsigned int counter = 1;
     for (std::vector<std::shared_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
-        printStartPlayerEntry(**it);
+        printStartPlayerEntry(counter, **it);
+        counter++;
     }
     /*=========================================================================================*/
     printBarrier();
