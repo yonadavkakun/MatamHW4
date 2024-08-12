@@ -1,8 +1,12 @@
 #pragma once
+#include <memory>
 #include <string>
+
+#include "Stats.h"
 using std::string;
 
 class Job {
+protected:
     string jobName;
 
 public:
@@ -10,7 +14,26 @@ public:
 
     virtual string getJob() const =0;
 
-    virtual string solarEclipseEffect();
+    virtual void solarEclipseEffect(std::shared_ptr<Stats> playerStats);
+    /**
+    * Gets the CombatPower of the player as int
+    *
+    * @return - CombatPower of the player
+    */
+    virtual int getCombatPower(std::shared_ptr<Stats> playerStats) const;
+    /**
+    * the player won, he gets the loot and level up
+    *
+    *@param loot
+    */
+    virtual void wonBattle(int loot,std::shared_ptr<Stats> playerStats);
+
+    /**
+   * the player lost, he lost HP as the monster damage
+   *
+   *@param damage
+   */
+    virtual void lostBattle(int damage,std::shared_ptr<Stats> playerStats);
 
     virtual ~Job() = default;
 };
@@ -18,7 +41,11 @@ public:
 //Warrior
 class Warrior : Job {
 public:
-    Warrior(const string &jobName);
+    Warrior(const string &jobName,std::shared_ptr<Stats> playerStats);
+
+    int getCombatPower(std::shared_ptr<Stats> playerStats) const override;
+
+    void wonBattle(int loot, std::shared_ptr<Stats> playerStats) override;
 
     string getJob() const override;
 
@@ -28,7 +55,7 @@ public:
 //Archer
 class Archer : Job {
 public:
-    Archer(const string &jobName);
+    Archer(const string &jobName,std::shared_ptr<Stats> playerStats);
 
     string getJob() const override;
 
@@ -42,7 +69,7 @@ public:
 
     string getJob() const override;
 
-    string solarEclipseEffect() override;
+    void solarEclipseEffect(std::shared_ptr<Stats> playerStats) override;
 
     ~Magician() override = default;
 };
