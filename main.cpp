@@ -11,7 +11,7 @@ using std::endl;
 using std::exception;
 using std::ifstream;
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
     if (argc != 3) {
         cout << "Invalid number of arguments" << endl;
         cout << "Usage: MatamStory <events_file_path> <players_file_path>" << endl;
@@ -32,8 +32,7 @@ int main(int argc, char** argv) {
     try {
         MatamStory game(eventsStream, playersStream);
         game.play();
-    }
-    catch (const exception& e) {
+    } catch (const exception &e) {
         cout << e.what() << endl;
         return 1;
     }

@@ -8,7 +8,7 @@ Monster::Monster(const string &monsterName) : Event(monsterName) {
 
 
 string Monster::getDescription() const {
-    string result = name + "(power " + std::to_string(combatPower) + ", "
+    string result = name + " (power " + std::to_string(combatPower) + ", "
                     + "loot " + std::to_string(loot)
                     + ", " + "damage " + std::to_string(damage) + ")";
     return result;
@@ -36,8 +36,12 @@ int Monster::getCombatPower() const {
     return combatPower;
 }
 
+void Monster::postBattle() {
+    return;
+}
+
 //snail
-Snail::Snail(): Monster("snail") {
+Snail::Snail(): Monster("Snail") {
     combatPower = 5;
     loot = 2;
     damage = 10;
@@ -77,13 +81,14 @@ void Balrog::postBattle() {
 
 
 //pack
-Pack::Pack(int packSize) : Monster("Pack"), packSize(packSize) {
+Pack::Pack(std::istream &eventsStream) : Monster("Pack") {
+    eventsStream >> packSize;
     for (int i = 0; i < packSize; i++) {
         string packMember;
-        std::cin >> packMember;
-        pack.push_back(EventFactory::createEvent(packMember));
+        eventsStream >> packMember;
+        pack.push_back(MonsterFactory::createMonster(packMember));
     }
-    for (std::vector<std::shared_ptr<Event> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();
@@ -102,7 +107,7 @@ string Pack::applyEvent(Player &player) {
     combatPower = 0;
     loot = 0;
     damage = 0;
-    for (std::vector<std::shared_ptr<Event> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();

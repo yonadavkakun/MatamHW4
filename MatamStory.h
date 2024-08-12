@@ -13,7 +13,6 @@ private:
  std::vector<std::shared_ptr<Event> > events;
  std::vector<std::shared_ptr<Player> > players;
  std::shared_ptr<Event> currEvent;
- std::shared_ptr<Player> currPlayer;
  /**
   * Playes a single turn for a player
   *

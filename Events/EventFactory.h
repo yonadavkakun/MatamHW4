@@ -20,12 +20,13 @@ public:
             {string("Snail"), [&]() { return MonsterFactory::createMonster(eventType); }},
             {string("Slime"), [&]() { return MonsterFactory::createMonster(eventType); }},
             {string("Balrog"), [&]() { return MonsterFactory::createMonster(eventType); }},
+            //{string("Pack"), [&]() { return MonsterFactory::createMonster(eventType); }},
         };
 
         auto it = EventMap.find(eventType);
         if (it != EventMap.end()) {
             return it->second();
         }
-        throw std::runtime_error("Invalid Event type");
+        throw std::runtime_error("Invalid Events File");
     }
 };

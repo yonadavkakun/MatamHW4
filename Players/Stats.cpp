@@ -37,6 +37,9 @@ void Stats::setLevel(int amount) {
 
 void Stats::setHealthPoints(int amount) {
     currHealthPoints += amount;
+    if (currHealthPoints < 0) {
+        currHealthPoints = 0;
+    }
 }
 
 void Stats::setMaxHealthPoints(int amount) {

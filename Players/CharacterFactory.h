@@ -18,6 +18,6 @@ public:
         if (it != characterMap.end()) {
             return it->second();
         }
-        throw std::runtime_error("Invalid Character type");
+        throw std::runtime_error("Invalid Players File");
     }
 };

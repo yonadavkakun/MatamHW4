@@ -17,6 +17,7 @@ public:
             {string("Snail"), [&]() { return std::make_shared<Snail>(); }},
             {string("Slime"), [&]() { return std::make_shared<Slime>(); }},
             {string("Balrog"), [&]() { return std::make_shared<Balrog>(); }},
+            //{string("Pack"), [&]() { return std::make_shared<Pack>(size); }},
         };
 
         auto it = MonsterMap.find(monsterType);

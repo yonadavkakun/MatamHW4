@@ -1,13 +1,16 @@
 #include "Player.h"
+
+#include <iostream>
 #include <ostream>
 #include <utility>
 #include "../Utilities.h"
 
 
 Player::Player(const string &playerName,
+               std::shared_ptr<Stats> playerStats,
                std::shared_ptr<Job> jobType,
                std::shared_ptr<Character> charType): name(playerName),
-                                                     stats(std::make_shared<Stats>()),
+                                                     stats(playerStats),
                                                      job(jobType),
                                                      character(charType) {
 }
@@ -23,8 +26,8 @@ string Player::getJob() const {
 
 string Player::getDescription() const {
         string result = name + ", " + getJob() + " with "
-                        + getCharacter() + "character"
-                        + "(level " + std::to_string(getLevel()) + ", force"
+                        + getCharacter() + " character "
+                        + "(level " + std::to_string(getLevel()) + ", force "
                         + std::to_string(getForce()) + ")";
         return result;
 }
@@ -68,7 +71,7 @@ void Player::wonBattle(int loot) {
 }
 
 void Player::lostBattle(int damage) {
-        job->lostBattle(-damage, stats);
+        job->lostBattle(damage, stats);
 }
 
 string Player::solarEclipseEffect() {
@@ -77,11 +80,13 @@ string Player::solarEclipseEffect() {
 }
 
 bool Player::operator<(const Player &other) const {
-        if (stats->getLevel() != other.stats->getLevel())
-                return stats->getLevel() < other.stats->getLevel();
-        if (stats->getCoins() != other.stats->getCoins())
-                return stats->getCoins() < other.stats->getCoins();
-        return this->name > other.name;
+        if (stats->getLevel() != other.stats->getLevel()) {
+                return stats->getLevel() > other.stats->getLevel();
+        }
+        if (stats->getCoins() != other.stats->getCoins()) {
+                return stats->getCoins() > other.stats->getCoins();
+        }
+        return this->name < other.name;
 }
 
 /*

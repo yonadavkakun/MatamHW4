@@ -17,7 +17,8 @@ protected:
 
 public:
  //c'tor
- Player(const string &playerName, std::shared_ptr<Job> jobType, std::shared_ptr<Character> charType);
+ Player(const string &playerName, std::shared_ptr<Stats> playerStats, std::shared_ptr<Job> jobType,
+        std::shared_ptr<Character> charType);
 
 
  /**

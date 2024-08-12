@@ -10,6 +10,7 @@ void Job::solarEclipseEffect(std::shared_ptr<Stats> playerStats) {
 
 void Job::wonBattle(int loot, std::shared_ptr<Stats> playerStats) {
     playerStats->setCoins(loot);
+    playerStats->setLevel(1);
 }
 
 void Job::lostBattle(int damage, std::shared_ptr<Stats> playerStats) {
@@ -23,8 +24,8 @@ int Job::getCombatPower(std::shared_ptr<Stats> playerStats) const {
 //Warrior
 
 Warrior::Warrior(const string &jobName, std::shared_ptr<Stats> playerStats): Job(jobName) {
-    playerStats->setHealthPoints(50);
     playerStats->setMaxHealthPoints(50);
+    playerStats->setHealthPoints(50);
 }
 
 string Warrior::getJob() const {
@@ -33,6 +34,7 @@ string Warrior::getJob() const {
 
 void Warrior::wonBattle(int loot, std::shared_ptr<Stats> playerStats) {
     playerStats->setCoins(loot);
+    playerStats->setLevel(1);
     playerStats->setHealthPoints(-10);
 }
 

@@ -43,11 +43,6 @@ public:
     */
     virtual int getDamage() const;
 
-    /**
-        * while not Monster throw exception
-        *
-        */
-    virtual void postBattle();
 
     /**
     * c'tor

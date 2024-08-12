@@ -17,6 +17,8 @@ public:
 
     virtual string applyEvent(Player &player) override;
 
+    virtual void postBattle();
+
     int getLoot() const override;
 
     int getDamage() const override;
@@ -52,11 +54,11 @@ public:
 };
 
 class Pack : public Monster {
-    int packSize;
-    std::vector<std::shared_ptr<Event> > pack;
+    int packSize = 0;
+    std::vector<std::shared_ptr<Monster> > pack;
 
 public:
-    Pack(int packSize);
+    Pack(std::istream &eventsStream);
 
     string applyEvent(Player &player) override;
 
