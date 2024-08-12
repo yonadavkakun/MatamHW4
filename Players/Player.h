@@ -1,22 +1,20 @@
-
 #pragma once
 #include <memory>
-#include "../Utilities.h"
+#include "../Events/Monster.h"
 #include "Character.h"
 #include <string>
 
-class Monster;
+#include "Job.h"
+#include "Stats.h"
+//class Monster;
 using std::string;
 
 
 class Player {
 protected:
  string name;
- int level;
- int force;
- int currHealthPoints;
- int maxHealthPoints;
- int coins;
+ std::shared_ptr<Stats> stats;
+ std::shared_ptr<Job> job;
  std::shared_ptr<Character> character;
 
 public:
@@ -27,7 +25,7 @@ public:
  static const int STARTING_COINS = 10;
 
  //c'tor
- Player(const string &playerName, std::shared_ptr<Character> charType);
+ Player(const string &playerName,std::shared_ptr<Job> jobType, std::shared_ptr<Character> charType);
 
 
  /**
