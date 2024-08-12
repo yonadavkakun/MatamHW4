@@ -8,7 +8,7 @@ void Job::solarEclipseEffect(std::shared_ptr<Stats> playerStats) {
     playerStats->setForce(-1);
 }
 
-void Job::wonBattle(int loot,std::shared_ptr<Stats> playerStats) {
+void Job::wonBattle(int loot, std::shared_ptr<Stats> playerStats) {
     playerStats->setCoins(loot);
 }
 
@@ -17,7 +17,7 @@ void Job::lostBattle(int damage, std::shared_ptr<Stats> playerStats) {
 }
 
 int Job::getCombatPower(std::shared_ptr<Stats> playerStats) const {
-    return playerStats->getForce()+playerStats->getLevel();
+    return playerStats->getForce() + playerStats->getLevel();
 }
 
 //Warrior
@@ -37,12 +37,12 @@ void Warrior::wonBattle(int loot, std::shared_ptr<Stats> playerStats) {
 }
 
 int Warrior::getCombatPower(std::shared_ptr<Stats> playerStats) const {
-    return 2*playerStats->getForce()+playerStats->getLevel();
+    return 2 * playerStats->getForce() + playerStats->getLevel();
 }
 
 //Archer
 
-Archer::Archer(const string &jobName, std::shared_ptr<Stats> playerStats) : Job(jobName){
+Archer::Archer(const string &jobName, std::shared_ptr<Stats> playerStats) : Job(jobName) {
     playerStats->setCoins(10);
 }
 
@@ -52,7 +52,8 @@ string Archer::getJob() const {
 
 //Magician
 
-Magician::Magician(const string &jobName) : Job(jobName){}
+Magician::Magician(const string &jobName) : Job(jobName) {
+}
 
 string Magician::getJob() const {
     return jobName;

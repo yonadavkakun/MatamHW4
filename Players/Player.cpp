@@ -5,21 +5,27 @@
 
 
 Player::Player(const string &playerName,
-        std::shared_ptr<Job> jobType,
-        std::shared_ptr<Character> charType): name(playerName),
-        stats(std::make_shared<Stats>()),
-        job(jobType),
-        character(charType){}
+               std::shared_ptr<Job> jobType,
+               std::shared_ptr<Character> charType): name(playerName),
+                                                     stats(std::make_shared<Stats>()),
+                                                     job(jobType),
+                                                     character(charType) {
+}
 
 int Player::getCoins() const {
         return stats->getCoins();
 }
 
+string Player::getJob() const {
+        return job->getJob();
+}
+
+
 string Player::getDescription() const {
-        string result = name + ", " + this->getJob() + " with "
-                        + this->getCharacter() + "character"
-                        + "(level " + std::to_string(this->getLevel()) + ", force"
-                        + std::to_string(this->getForce()) + ")";
+        string result = name + ", " + getJob() + " with "
+                        + getCharacter() + "character"
+                        + "(level " + std::to_string(getLevel()) + ", force"
+                        + std::to_string(getForce()) + ")";
         return result;
 }
 
@@ -57,12 +63,12 @@ int Player::getCombatPower() const {
         return job->getCombatPower(stats);
 }
 
-void Player::wonBattle(const Monster &monsterType) {
-        job->wonBattle(monsterType.getLoot(),stats);
+void Player::wonBattle(int loot) {
+        job->wonBattle(loot, stats);
 }
 
-void Player::lostBattle(const Monster &monsterType) {
-        job->lostBattle(-monsterType.getDamage(),stats);
+void Player::lostBattle(int damage) {
+        job->lostBattle(-damage, stats);
 }
 
 string Player::solarEclipseEffect() {

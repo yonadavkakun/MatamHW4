@@ -1,6 +1,7 @@
 # include "Monster.h"
 #include "EventFactory.h"
 #include <iostream>
+#include "../Utilities.h"
 
 Monster::Monster(const string &monsterName) : Event(monsterName) {
 }
@@ -15,10 +16,10 @@ string Monster::getDescription() const {
 
 string Monster::applyEvent(Player &player) {
     if (combatPower < player.getCombatPower()) {
-        player.wonBattle(*this);
+        player.wonBattle(getLoot());
         return getEncounterWonMessage(player, getLoot());
     } else {
-        player.lostBattle(*this);
+        player.lostBattle(getDamage());
         return getEncounterLostMessage(player, getDamage());
     }
 }
@@ -60,13 +61,14 @@ Balrog::Balrog(): Monster("Balrog") {
 
 string Balrog::applyEvent(Player &player) {
     if (combatPower < player.getCombatPower()) {
-        player.wonBattle(*this);
+        player.wonBattle(getLoot());
+        combatPower += 2;
         return getEncounterWonMessage(player, getLoot());
     } else {
-        player.lostBattle(*this);
+        player.lostBattle(getDamage());
+        combatPower += 2;
         return getEncounterLostMessage(player, getDamage());
     }
-    combatPower += 2;
 }
 
 void Balrog::postBattle() {
@@ -107,10 +109,10 @@ string Pack::applyEvent(Player &player) {
         it.operator*()->postBattle();
     }
     if (combatPower < player.getCombatPower()) {
-        player.wonBattle(*this);
+        player.wonBattle(getLoot());
         return getEncounterWonMessage(player, getLoot());
     } else {
-        player.lostBattle(*this);
+        player.lostBattle(getDamage());
         return getEncounterLostMessage(player, getDamage());
     }
 }

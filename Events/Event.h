@@ -1,11 +1,10 @@
-
 #pragma once
 #include <string>
 using std::string;
 #include <memory>
 #include <vector>
-
 #include "../Players/Player.h"
+//class Player;
 
 class Event {
 protected:

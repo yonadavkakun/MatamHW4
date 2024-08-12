@@ -4,6 +4,8 @@
 #include <map>
 #include <memory>
 #include <algorithm>
+#include "Utilities.h"
+#include "Events/EventFactory.h"
 
 
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
@@ -12,11 +14,6 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
     while (eventsStream >> eventInput) {
         events.push_back(EventFactory::createEvent(eventInput));
     }
-    for (std::vector<std::shared_ptr<Event> >::iterator it = events.begin(); it != events.end(); ++it) {
-        std::cout << it.operator*()->getDescription() << std::endl;
-    }
-
-
     /*==========================================*/
     /*===== TODO: Open and Read players file =====*/
     string playerName;
@@ -91,7 +88,7 @@ bool MatamStory::isGameOver() const {
                                                   return *a < *b;
                                               });
         printGameOver();
-        printWinner(*maxPlayerIter);
+        printWinner(**maxPlayerIter);
         return true;
     } else if (allPlayersHealthZero) {
         printGameOver();
@@ -106,8 +103,10 @@ bool MatamStory::isGameOver() const {
 void MatamStory::play() {
     printStartMessage();
     /*===== TODO: Print start message entry for each player using "printStartPlayerEntry" =====*/
+    unsigned int counter = 0;
     for (std::vector<std::shared_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
-        printStartPlayerEntry(**it);
+        printStartPlayerEntry(counter, **it);
+        counter++;
     }
     /*=========================================================================================*/
     printBarrier();

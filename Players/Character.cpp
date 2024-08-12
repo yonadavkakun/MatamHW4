@@ -1,6 +1,7 @@
 #include "Character.h"
 #include "Player.h"
 #include <string>
+#include "../Utilities.h"
 
 Character::Character(const std::string &characterType): character(characterType) {
 }

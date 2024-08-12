@@ -5,11 +5,6 @@
 
 #include "Players/Player.h"
 #include "Events/Event.h"
-#include "Players/Character.h"
-#include "Players/PlayersJobs.h"
-#include "Events/Monster.h"
-#include "Utilities.h"
-#include "Events/EventFactory.h"
 #include "Players/PlayerFactory.h"
 
 class MatamStory {

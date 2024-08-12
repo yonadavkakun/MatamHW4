@@ -1,6 +1,8 @@
 #pragma once
 #include "Event.h"
 
+//class Player;
+
 
 class Monster : public Event {
 protected:
@@ -11,7 +13,7 @@ protected:
 public:
     Monster(const string &monsterName);
 
-    string getDescription() const override;
+    virtual string getDescription() const override;
 
     virtual string applyEvent(Player &player) override;
 
@@ -21,7 +23,7 @@ public:
 
     int getCombatPower() const override;
 
-    virtual ~Monster() = default;
+    virtual ~Monster() override = default;
 };
 
 class Snail : public Monster {
