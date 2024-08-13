@@ -14,7 +14,7 @@ public:
 
     virtual string getJob() const =0;
 
-    virtual void solarEclipseEffect(std::shared_ptr<Stats> playerStats);
+    virtual int solarEclipseEffect(std::shared_ptr<Stats> playerStats);
 
     /**
     * Gets the CombatPower of the player as int
@@ -71,7 +71,7 @@ public:
 
     string getJob() const override;
 
-    void solarEclipseEffect(std::shared_ptr<Stats> playerStats) override;
+    int solarEclipseEffect(std::shared_ptr<Stats> playerStats) override;
 
     ~Magician() override = default;
 };

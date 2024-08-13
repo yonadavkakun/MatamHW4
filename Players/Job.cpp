@@ -4,8 +4,9 @@
 Job::Job(const string &jobName) : jobName(jobName) {
 }
 
-void Job::solarEclipseEffect(std::shared_ptr<Stats> playerStats) {
+int Job::solarEclipseEffect(std::shared_ptr<Stats> playerStats) {
     playerStats->setForce(-1);
+    return -1;
 }
 
 void Job::wonBattle(int loot, std::shared_ptr<Stats> playerStats) {
@@ -61,8 +62,9 @@ string Magician::getJob() const {
     return jobName;
 }
 
-void Magician::solarEclipseEffect(std::shared_ptr<Stats> playerStats) {
+int Magician::solarEclipseEffect(std::shared_ptr<Stats> playerStats) {
     playerStats->setForce(1);
+    return 1;
 }
 
 

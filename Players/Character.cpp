@@ -27,7 +27,7 @@ RiskTaking::RiskTaking(const std::string &characterType) : Character(characterTy
 }
 
 std::string RiskTaking::potionPurchase(Player &player) {
-    if (player.getHealthPoints() < 50) {
+    if (player.getHealthPoints() < 50 && player.getCoins() > 5) {
         player.buySinglePotion();
         return getPotionsPurchaseMessage(player, 1);
     } else {

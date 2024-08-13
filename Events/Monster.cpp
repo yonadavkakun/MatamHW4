@@ -36,8 +36,8 @@ int Monster::getCombatPower() const {
     return combatPower;
 }
 
-void Monster::postBattle() {
-    return;
+int Monster::balrogPackMember() {
+    return 0;
 }
 
 //snail
@@ -75,23 +75,25 @@ string Balrog::applyEvent(Player &player) {
     }
 }
 
-void Balrog::postBattle() {
-    combatPower += 2;
+int Balrog::balrogPackMember() {
+    return 1;
 }
 
 
 //pack
 Pack::Pack(std::istream &eventsStream) : Monster("Pack") {
     eventsStream >> packSize;
+    if (packSize < 0) {
+        throw std::runtime_error("Invalid Events File");
+    }
     for (int i = 0; i < packSize; i++) {
-        string packMember;
-        eventsStream >> packMember;
-        pack.push_back(MonsterFactory::createMonster(packMember));
+        pack.push_back(MonsterFactory::createMonster(eventsStream));
     }
     for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();
+        numberOfBalrog += it.operator*()->balrogPackMember();
     }
 }
 
@@ -104,20 +106,13 @@ string Pack::getDescription() const {
 
 
 string Pack::applyEvent(Player &player) {
-    combatPower = 0;
-    loot = 0;
-    damage = 0;
-    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
-        combatPower += it.operator*()->getCombatPower();
-        loot += it.operator*()->getLoot();
-        damage += it.operator*()->getDamage();
-        it.operator*()->postBattle();
-    }
     if (combatPower < player.getCombatPower()) {
         player.wonBattle(getLoot());
+        combatPower += numberOfBalrog * 2;
         return getEncounterWonMessage(player, getLoot());
     } else {
         player.lostBattle(getDamage());
+        combatPower += numberOfBalrog * 2;
         return getEncounterLostMessage(player, getDamage());
     }
 }

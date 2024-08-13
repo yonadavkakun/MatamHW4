@@ -11,5 +11,5 @@ std::shared_ptr<Job> JobFactory::createJob(const std::string &jobType, std::shar
     if (it != jobMap.end()) {
         return it->second();
     }
-    throw std::runtime_error("Invalid job type");
+    throw std::runtime_error("Invalid Players File");
 }

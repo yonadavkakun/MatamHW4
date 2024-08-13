@@ -14,9 +14,15 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
     while (!eventsStream.eof()) {
         events.push_back(EventFactory::createEvent(eventsStream));
     }
+    if (events.size() < 2) {
+        throw std::runtime_error("Invalid Events File");
+    }
     /*============================================*/
     while (!playersStream.eof()) {
         players.push_back(PlayerFactory::createPlayer(playersStream));
+    }
+    if (players.size() < 2 || players.size() > 6) {
+        throw std::runtime_error("Invalid Players File");
     }
     this->m_turnIndex = 1;
 }
@@ -79,12 +85,13 @@ bool MatamStory::isGameOver() const {
                                                 return player->getHealthPoints() == 0;
                                             });
     if (hasLevel10Player) {
-        auto maxPlayerIter = std::max_element(players.begin(), players.end(),
-                                              [](const std::shared_ptr<Player> &a, const std::shared_ptr<Player> &b) {
-                                                  return *a < *b;
-                                              });
+        std::vector<std::shared_ptr<Player> > sortedPlayers = players;
+            std::sort(sortedPlayers.begin(), sortedPlayers.end(),
+                      [](const std::shared_ptr<Player> &a, const std::shared_ptr<Player> &b) {
+                          return *a < *b;
+                      });
         printGameOver();
-        printWinner(**maxPlayerIter);
+        printWinner(*sortedPlayers.at(0));
         return true;
     } else if (allPlayersHealthZero) {
         printGameOver();

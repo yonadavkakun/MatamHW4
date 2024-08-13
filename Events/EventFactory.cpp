@@ -6,9 +6,9 @@ std::shared_ptr<Event> EventFactory::createEvent(std::istream &eventsStream) {
     const static std::map<std::string, EventCreator> EventMap = {
         {string("SolarEclipse"), [&]() { return std::make_shared<SolarEclipse>(eventType); }},
         {string("PotionsMerchant"), [&]() { return std::make_shared<PotionsMerchant>(eventType); }},
-        {string("Snail"), [&]() { return MonsterFactory::createMonster(eventType); }},
-        {string("Slime"), [&]() { return MonsterFactory::createMonster(eventType); }},
-        {string("Balrog"), [&]() { return MonsterFactory::createMonster(eventType); }},
+        {string("Snail"), [&]() { return std::make_shared<Snail>(); }},
+        {string("Slime"), [&]() { return std::make_shared<Slime>(); }},
+        {string("Balrog"), [&]() { return std::make_shared<Balrog>(); }},
         {string("Pack"), [&]() { return std::make_shared<Pack>(eventsStream); }},
     };
 

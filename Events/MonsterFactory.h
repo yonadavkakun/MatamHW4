@@ -12,5 +12,5 @@ class MonsterFactory {
 public:
     using MonsterCreator = std::function<std::shared_ptr<Monster>()>;
 
-    static std::shared_ptr<Monster> createMonster(const std::string &monsterType);
+    static std::shared_ptr<Monster> createMonster(std::istream &eventsStream);
 };

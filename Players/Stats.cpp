@@ -25,14 +25,23 @@ int Stats::getMaxHealthPoints() const {
 
 void Stats::setCoins(int amount) {
     coins += amount;
+    if (coins < 0) {
+        coins = 0;
+    }
 }
 
 void Stats::setForce(int amount) {
     force += amount;
+    if (force < 0) {
+        force = 0;
+    }
 }
 
 void Stats::setLevel(int amount) {
     level += amount;
+    if (level < 0) {
+        level = 0;
+    }
 }
 
 void Stats::setHealthPoints(int amount) {
@@ -44,6 +53,9 @@ void Stats::setHealthPoints(int amount) {
 
 void Stats::setMaxHealthPoints(int amount) {
     maxHealthPoints += amount;
+    if (maxHealthPoints < 0) {
+        maxHealthPoints = 0;
+    }
 }
 
 

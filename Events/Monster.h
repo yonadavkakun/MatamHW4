@@ -6,9 +6,9 @@
 
 class Monster : public Event {
 protected:
-    int combatPower;
-    int loot;
-    int damage;
+    int combatPower = 0;
+    int loot = 0;
+    int damage = 0;
 
 public:
     Monster(const string &monsterName);
@@ -17,7 +17,7 @@ public:
 
     virtual string applyEvent(Player &player) override;
 
-    virtual void postBattle();
+    virtual int balrogPackMember();
 
     int getLoot() const override;
 
@@ -48,13 +48,14 @@ public:
 
     string applyEvent(Player &player) override;
 
-    void postBattle() override;
+    int balrogPackMember() override;
 
     ~Balrog() override = default;
 };
 
 class Pack : public Monster {
     int packSize = 0;
+    int numberOfBalrog = 0;
     std::vector<std::shared_ptr<Monster> > pack;
 
 public:

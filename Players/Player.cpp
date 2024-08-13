@@ -75,8 +75,7 @@ void Player::lostBattle(int damage) {
 }
 
 string Player::solarEclipseEffect() {
-        job->solarEclipseEffect(stats);
-        return getSolarEclipseMessage(*this, -1);
+        return getSolarEclipseMessage(*this, job->solarEclipseEffect(stats));
 }
 
 bool Player::operator<(const Player &other) const {
