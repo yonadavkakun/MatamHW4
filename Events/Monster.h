@@ -17,7 +17,7 @@ public:
 
     virtual string applyEvent(Player &player) override;
 
-    virtual int balrogPackMember();
+    virtual void postBattle();
 
     int getLoot() const override;
 
@@ -48,20 +48,22 @@ public:
 
     string applyEvent(Player &player) override;
 
-    int balrogPackMember() override;
+    void postBattle() override;
 
     ~Balrog() override = default;
 };
 
 class Pack : public Monster {
     int packSize = 0;
-    int numberOfBalrog = 0;
     std::vector<std::shared_ptr<Monster> > pack;
 
 public:
     Pack(std::istream &eventsStream);
 
     string applyEvent(Player &player) override;
+
+    void postBattle() override;
+
 
     string getDescription() const override;
 

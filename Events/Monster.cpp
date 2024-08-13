@@ -36,8 +36,8 @@ int Monster::getCombatPower() const {
     return combatPower;
 }
 
-int Monster::balrogPackMember() {
-    return 0;
+void Monster::postBattle() {
+    return;
 }
 
 //snail
@@ -75,8 +75,8 @@ string Balrog::applyEvent(Player &player) {
     }
 }
 
-int Balrog::balrogPackMember() {
-    return 1;
+void Balrog::postBattle() {
+    combatPower += 2;
 }
 
 
@@ -93,7 +93,6 @@ Pack::Pack(std::istream &eventsStream) : Monster("Pack") {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();
-        numberOfBalrog += it.operator*()->balrogPackMember();
     }
 }
 
@@ -104,18 +103,38 @@ string Pack::getDescription() const {
     return result;
 }
 
-
 string Pack::applyEvent(Player &player) {
-    if (combatPower < player.getCombatPower()) {
+    int currCombatPower = combatPower;
+    combatPower = 0;
+    loot = 0;
+    damage = 0;
+    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+        it.operator*()->postBattle();
+        combatPower += it.operator*()->getCombatPower();
+        loot += it.operator*()->getLoot();
+        damage += it.operator*()->getDamage();
+    }
+    if (currCombatPower < player.getCombatPower()) {
         player.wonBattle(getLoot());
-        combatPower += numberOfBalrog * 2;
         return getEncounterWonMessage(player, getLoot());
     } else {
         player.lostBattle(getDamage());
-        combatPower += numberOfBalrog * 2;
         return getEncounterLostMessage(player, getDamage());
     }
 }
+
+void Pack::postBattle() {
+    combatPower = 0;
+    loot = 0;
+    damage = 0;
+    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+        it.operator*()->postBattle();
+        combatPower += it.operator*()->getCombatPower();
+        loot += it.operator*()->getLoot();
+        damage += it.operator*()->getDamage();
+    }
+}
+
 
 
 
