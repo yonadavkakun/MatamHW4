@@ -13,5 +13,5 @@ class EventFactory {
 public:
     using EventCreator = std::function<std::shared_ptr<Event>()>;
 
-    static std::shared_ptr<Event> createEvent(const std::string &eventType);
+    static std::shared_ptr<Event> createEvent(std::istream &eventsStream);
 };

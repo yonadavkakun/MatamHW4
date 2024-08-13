@@ -6,34 +6,18 @@
 #include <algorithm>
 #include <memory>
 #include <memory>
-
 #include "Utilities.h"
 #include "Events/EventFactory.h"
 
 
 MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) {
-    /*===== TODO: Open and read events file =====*/
-    string eventInput;
-    while (eventsStream >> eventInput) {
-        if (eventInput == "Pack") {
-            events.push_back(std::make_shared<Pack>(eventsStream));
-        } else {
-            events.push_back(EventFactory::createEvent(eventInput));
-        }
-    }
-    /*==========================================*/
-    /*===== TODO: Open and Read players file =====*/
-    string playerName;
-    while (playersStream >> playerName) {
-        string playerJob;
-        playersStream >> playerJob;
-        string playerCharacter;
-        playersStream >> playerCharacter;
-        players.push_back(PlayerFactory::createPlayer(playerName, playerJob, playerCharacter));
+    while (!eventsStream.eof()) {
+        events.push_back(EventFactory::createEvent(eventsStream));
     }
     /*============================================*/
-
-
+    while (!playersStream.eof()) {
+        players.push_back(PlayerFactory::createPlayer(playersStream));
+    }
     this->m_turnIndex = 1;
 }
 

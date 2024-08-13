@@ -6,7 +6,5 @@
 
 class PlayerFactory {
 public:
-    static std::shared_ptr<Player> createPlayer(const std::string &playerName,
-                                                const std::string &playerJob,
-                                                const std::string &playerCharacter);
+    static std::shared_ptr<Player> createPlayer(std::istream &playersStream);
 };
