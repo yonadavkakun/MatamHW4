@@ -1,0 +1,629 @@
+* commit ab75ed9f0c45e193a975b83517a98c39679aad2b
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Wed Aug 14 17:36:17 2024 +0300
+| 
+|     adding documentations
+| 
+|  Events/Event.cpp           |  13 ----
+|  Events/Event.h             |  19 -----
+|  Events/EventFactory.h      |   7 ++
+|  Events/Monster.h           |  46 ++++++++++--
+|  Events/MonsterFactory.h    |   8 ++-
+|  MatamStory.cpp             |  26 ++-----
+|  Players/Character.h        |  59 +++++++++++++---
+|  Players/CharacterFactory.h |   8 ++-
+|  Players/Job.h              | 163 ++++++++++++++++++++++++++++++-------------
+|  Players/JobFactory.h       |   8 ++-
+|  Players/Player.cpp         |   7 --
+|  Players/Player.h           |  16 +++--
+|  Players/PlayerFactory.h    |   7 ++
+|  13 files changed, 254 insertions(+), 133 deletions(-)
+| 
+* commit 884a5ba921af54b468dcae47de9bb59ff2595d53
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Tue Aug 13 23:25:27 2024 +0300
+| 
+|     debug recursive pack
+| 
+|  Events/Monster.cpp | 37 ++++++++++++++++++++++++++++---------
+|  Events/Monster.h   |  8 +++++---
+|  2 files changed, 33 insertions(+), 12 deletions(-)
+| 
+* commit 7c9e932012661654d2a25bef8ff87859e0ae9704
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Tue Aug 13 23:09:44 2024 +0300
+| 
+|     debugging after uri's tests
+| 
+|  Events/EventFactory.cpp   |  6 +++---
+|  Events/Monster.cpp        | 27 +++++++++++----------------
+|  Events/Monster.h          | 11 ++++++-----
+|  Events/MonsterFactory.cpp |  8 +++++---
+|  Events/MonsterFactory.h   |  2 +-
+|  MatamStory.cpp            | 17 ++++++++++++-----
+|  Players/Character.cpp     |  2 +-
+|  Players/Job.cpp           |  6 ++++--
+|  Players/Job.h             |  4 ++--
+|  Players/JobFactory.cpp    |  2 +-
+|  Players/Player.cpp        |  3 +--
+|  Players/PlayerFactory.cpp | 10 ++++++++++
+|  Players/Stats.cpp         | 12 ++++++++++++
+|  13 files changed, 69 insertions(+), 41 deletions(-)
+| 
+* commit ea18a4b872b744936715c67548999b72b1d01a6c
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Tue Aug 13 12:07:40 2024 +0300
+| 
+|     update Matamstory.cpp
+| 
+|  Events/EventFactory.cpp   |  6 ++++--
+|  Events/EventFactory.h     |  2 +-
+|  MatamStory.cpp            | 26 +++++---------------------
+|  Players/PlayerFactory.cpp |  6 +++---
+|  Players/PlayerFactory.h   |  4 +---
+|  5 files changed, 14 insertions(+), 30 deletions(-)
+| 
+* commit abd7ec40fb01b39096b0db59c26414b92ff2be62
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Mon Aug 12 22:36:58 2024 +0300
+| 
+|     splitting Factory to .h and .cpp
+| 
+|  Events/EventFactory.cpp      | 36 +++++++++++-----------------
+|  Events/EventFactory.h        | 17 +-------------
+|  Events/MonsterFactory.cpp    | 16 +++++++++++++
+|  Events/MonsterFactory.h      | 15 +-----------
+|  Players/CharacterFactory.cpp | 16 +++++++++++++
+|  Players/CharacterFactory.h   | 13 +----------
+|  Players/JobFactory.cpp       | 15 ++++++++++++
+|  Players/JobFactory.h         | 14 +----------
+|  Players/PlayerFactory.cpp    | 30 +++++-------------------
+|  Players/PlayerFactory.h      |  8 ++-----
+|  Players/PlayersJobs.cpp      | 53 ------------------------------------------
+|  Players/PlayersJobs.h        | 29 -----------------------
+|  12 files changed, 73 insertions(+), 189 deletions(-)
+| 
+* commit 86599c3c5b7708f927e8a668a28bfdf02cb25746
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Mon Aug 12 22:21:42 2024 +0300
+| 
+|     Replace main content with b2 content
+| 
+|  .gitmodules                |  6 +++
+|  Events/Event.cpp           |  4 --
+|  Events/Event.h             |  8 +---
+|  Events/EventFactory.h      | 30 ++++++++++++---
+|  Events/Monster.cpp         | 35 +++++++++++-------
+|  Events/Monster.h           | 14 ++++---
+|  Events/MonsterFactory.h    | 29 +++++++++++++++
+|  MatamGenericTester         |  1 +
+|  MatamStory.cpp             | 35 ++++++++++++------
+|  MatamStory.h               |  6 ---
+|  Players/Character.cpp      |  1 +
+|  Players/CharacterFactory.h | 23 ++++++++++++
+|  Players/Job.cpp            | 72 ++++++++++++++++++++++++++++++++++++
+|  Players/Job.h              | 78 +++++++++++++++++++++++++++++++++++++++
+|  Players/JobFactory.h       | 28 ++++++++++++++
+|  Players/Player.cpp         | 70 +++++++++++++++++++----------------
+|  Players/Player.h           | 37 ++++++-------------
+|  Players/PlayerFactory.h    | 17 +++++----
+|  Players/Stats.cpp          | 49 ++++++++++++++++++++++++
+|  Players/Stats.h            | 88 ++++++++++++++++++++++++++++++++++++++++++++
+|  TechnionMatam              |  1 +
+|  main.cpp                   |  5 +--
+|  22 files changed, 515 insertions(+), 122 deletions(-)
+|   
+*   commit dfa276a8d4cbd4746fedf07290fff05c797e9463
+|\  Merge: 3abec81 1617663
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 22:16:51 2024 +0300
+| | 
+| |     Merge branch 'b2'
+| | 
+| * commit 1617663cca6ad17e8ce53faddf9d2c37b4157ded
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 22:12:22 2024 +0300
+| | 
+| |     debug and test
+| | 
+| |  .gitmodules                |  6 ++++++
+| |  Events/Event.cpp           |  4 ----
+| |  Events/Event.h             |  5 -----
+| |  Events/EventFactory.h      |  3 ++-
+| |  Events/Monster.cpp         | 19 ++++++++++++-------
+| |  Events/Monster.h           |  8 +++++---
+| |  Events/MonsterFactory.h    |  1 +
+| |  MatamGenericTester         |  1 +
+| |  MatamStory.cpp             | 24 ++++++++++++++++++------
+| |  MatamStory.h               |  1 -
+| |  Players/CharacterFactory.h |  2 +-
+| |  Players/Job.cpp            |  4 +++-
+| |  Players/Player.cpp         | 23 ++++++++++++++---------
+| |  Players/Player.h           |  3 ++-
+| |  Players/PlayerFactory.h    |  4 ++--
+| |  Players/Stats.cpp          |  3 +++
+| |  TechnionMatam              |  1 +
+| |  main.cpp                   |  5 ++---
+| |  18 files changed, 73 insertions(+), 44 deletions(-)
+| | 
+| * commit 45558f0620b785cf3c088d971dbf9cde4e47a910
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 14:34:49 2024 +0300
+| | 
+| |     debug Player
+| | 
+| |  Events/Event.h            |  3 +--
+| |  Events/EventFactory.cpp   | 27 ---------------------------
+| |  Events/Monster.cpp        | 16 +++++++++-------
+| |  Events/Monster.h          |  6 ++++--
+| |  Events/MonsterFactory.h   | 10 +++++-----
+| |  MatamStory.cpp            | 13 ++++++-------
+| |  MatamStory.h              |  5 -----
+| |  Players/Character.cpp     |  1 +
+| |  Players/Job.cpp           | 11 ++++++-----
+| |  Players/Job.h             | 16 +++++++++-------
+| |  Players/Player.cpp        | 32 +++++++++++++++++++-------------
+| |  Players/Player.h          | 26 ++++++--------------------
+| |  Players/PlayerFactory.cpp | 28 ----------------------------
+| |  Players/PlayerFactory.h   | 17 +++++++++--------
+| |  14 files changed, 75 insertions(+), 136 deletions(-)
+| | 
+| * commit 61eb6348fb893be8cb3f7789b3b4409665fcc2d4
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 14:00:13 2024 +0300
+| | 
+| |     open Event and Monster Factory
+| | 
+| |  Events/EventFactory.h   | 29 +++++++++++++++++++++++------
+| |  Events/MonsterFactory.h | 28 ++++++++++++++++++++++++++++
+| |  2 files changed, 51 insertions(+), 6 deletions(-)
+| | 
+| * commit 8a3af08bd0592b791961bd5322093047b3cb66b2
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 13:47:29 2024 +0300
+| | 
+| |     open Job and Character Factory
+| | 
+| |  Players/CharacterFactory.h | 23 ++++++++++++++++++
+| |  Players/JobFactory.h       | 28 ++++++++++++++++++++++
+| |  Players/PlayersJobs.cpp    | 53 ------------------------------------------
+| |  Players/PlayersJobs.h      | 29 -----------------------
+| |  4 files changed, 51 insertions(+), 82 deletions(-)
+| | 
+| * commit 8aa747d8eda8c9b30fdb9b7c15c569430bddb08a
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 12:31:39 2024 +0300
+| | 
+| |     update Player with stats and job
+| | 
+| |  Players/Player.cpp | 47 ++++++++++++++++++++++-------------------------
+| |  Players/Player.h   | 16 +++++++---------
+| |  2 files changed, 29 insertions(+), 34 deletions(-)
+| | 
+| * commit f0a4f91daed59d7d9d122bc16af411bc8e2107f3
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 12:18:30 2024 +0300
+| | 
+| |     imp Stats.cpp
+| | 
+| |  Players/Stats.cpp | 46 ++++++++++++++++++++++++++++++++++++++++++++++
+| |  Players/Stats.h   | 10 +++++-----
+| |  2 files changed, 51 insertions(+), 5 deletions(-)
+| | 
+| * commit b93a726274b9fa58f8c9696a3c46c24cc416cf19
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 12:13:17 2024 +0300
+| | 
+| |     imp Job.cpp
+| | 
+| |  Players/Job.cpp | 69 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+| |  Players/Job.h   | 35 +++++++++++++++++++++++----
+| |  2 files changed, 100 insertions(+), 4 deletions(-)
+| | 
+| * commit 94f888b863ea41d1ea2367c72d12800985fe7742
+| | Author: yonadavkakun <yonadav4321@gmail.com>
+| | Date:   Mon Aug 12 11:48:48 2024 +0300
+| | 
+| |     open Stats.h
+| | 
+| |  Players/Stats.h | 88 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+| |  1 file changed, 88 insertions(+)
+| | 
+| * commit fcc83f6d5d22b1383bc86ff1611b69e5fa574489
+|/  Author: yonadavkakun <yonadav4321@gmail.com>
+|   Date:   Mon Aug 12 11:48:35 2024 +0300
+|   
+|       open Job.h
+|   
+|    Players/Job.h | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+|    1 file changed, 49 insertions(+)
+| 
+* commit 3abec814070f60441d586826642e88cd3be0234a
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Mon Aug 12 00:17:54 2024 +0300
+| 
+|     imp isGameOver and play
+| 
+|  Events/Event.h   |  3 ++-
+|  Events/Monster.h |  2 +-
+|  MatamStory.cpp   | 36 ++++++++++++++++++++++++++++++------
+|  3 files changed, 33 insertions(+), 8 deletions(-)
+| 
+* commit 4f4cbc1f3de67a4a1efa232fb43bd95314c91435
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 11 23:26:25 2024 +0300
+| 
+|     imp playRound
+| 
+|  MatamStory.cpp | 12 +++++++++++-
+|  1 file changed, 11 insertions(+), 1 deletion(-)
+| 
+* commit d28621076eda207e4b6ac1c181bdac4f0da1fdf3
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 11 23:11:17 2024 +0300
+| 
+|     imp playTurn
+| 
+|  MatamStory.cpp | 4 +---
+|  1 file changed, 1 insertion(+), 3 deletions(-)
+| 
+* commit 414d0782ad27c754455e3bdfb34e80410aaf07a2
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 11 23:09:12 2024 +0300
+| 
+|      change applyEvent to return string, monsters
+| 
+|  Events/Monster.cpp | 22 ++++++++++++++++++----
+|  Events/Monster.h   |  8 +++++---
+|  2 files changed, 23 insertions(+), 7 deletions(-)
+| 
+* commit 8e12415603ef311412cd2a3f50dde221a144f8a8
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 11 22:58:45 2024 +0300
+| 
+|      change applyEvent to return string, solar and potion
+| 
+|  Events/Event.cpp        | 15 +++++++++++++--
+|  Events/Event.h          | 14 ++++++++------
+|  Events/Monster.h        |  4 ----
+|  MatamStory.cpp          | 11 ++++-------
+|  MatamStory.h            | 11 ++++++++---
+|  Players/Character.cpp   | 21 ++++++++++++++++++++-
+|  Players/Character.h     |  8 +++++---
+|  Players/Player.cpp      | 21 ++++++++++++++++++---
+|  Players/Player.h        | 21 +++++++++++++++++++--
+|  Players/PlayersJobs.cpp |  9 ++++++---
+|  Players/PlayersJobs.h   |  4 ++--
+|  11 files changed, 103 insertions(+), 36 deletions(-)
+| 
+* commit 54e662db7cf4e744fdc7fcf16743265b1e5a6c24
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 11 21:06:05 2024 +0300
+| 
+|     update postBattle
+| 
+|  Events/Monster.cpp | 3 ++-
+|  1 file changed, 2 insertions(+), 1 deletion(-)
+| 
+* commit 481745415ed8440f64e0c44ec1321a5e03ede3f5
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 11 20:54:35 2024 +0300
+| 
+|     update Pack
+| 
+|  Events/Event.cpp   | 13 +++++++++++++
+|  Events/Event.h     | 29 +++++++++++++++++++++++++++++
+|  Events/Monster.cpp | 47 ++++++++++++++++++++++++++++++++++++++++-------
+|  Events/Monster.h   | 14 ++++++++++++--
+|  Players/Player.cpp | 10 ++++++----
+|  Players/Player.h   |  9 +++++----
+|  6 files changed, 105 insertions(+), 17 deletions(-)
+| 
+* commit 9edb4cc104b8fc1846ae68445f0582dde4f7fbdb
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sat Aug 10 22:41:05 2024 +0300
+| 
+|     imp oprator < for player
+| 
+|  Events/Monster.cpp | 2 +-
+|  Players/Player.cpp | 9 +++++++++
+|  Players/Player.h   | 9 ++++++++-
+|  3 files changed, 18 insertions(+), 2 deletions(-)
+| 
+* commit ad95454fdb911eb054d1f6559039ee66f0b6d5d0
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sat Aug 10 22:02:22 2024 +0300
+| 
+|     imp monster apllyEvent
+| 
+|  Events/Monster.cpp      | 21 +++++++++++++++++++++
+|  Players/Player.cpp      |  2 +-
+|  Players/Player.h        |  2 +-
+|  Players/PlayersJobs.cpp |  5 +++++
+|  Players/PlayersJobs.h   |  2 ++
+|  5 files changed, 30 insertions(+), 2 deletions(-)
+| 
+* commit ea225c79ed32410a7dd2a4aca7a0ec371ec473fd
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sat Aug 10 21:44:17 2024 +0300
+| 
+|     imp solarEclipseEffect
+| 
+|  Events/Event.cpp        |  6 ++++++
+|  Events/Event.h          | 11 ++++++++---
+|  Events/Monster.cpp      |  8 ++++++++
+|  Events/Monster.h        |  6 +++---
+|  Players/Player.cpp      |  7 ++++++-
+|  Players/Player.h        |  5 ++++-
+|  Players/PlayersJobs.cpp |  3 +++
+|  Players/PlayersJobs.h   |  2 ++
+|  8 files changed, 40 insertions(+), 8 deletions(-)
+| 
+* commit 557cfb7169a16ff127a22ea627de6fdd8ca9bd97
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sat Aug 10 21:32:21 2024 +0300
+| 
+|     imp win, lost and os
+| 
+|  Players/Player.cpp      | 19 +++++++++++++++++++
+|  Players/Player.h        | 29 +++++++++++++++++++++++++++++
+|  Players/PlayersJobs.cpp |  4 ++++
+|  Players/PlayersJobs.h   |  2 ++
+|  4 files changed, 54 insertions(+)
+| 
+* commit 553e90def0ae4e2f7d0487ee96b8abf7db02d614
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sat Aug 10 21:04:32 2024 +0300
+| 
+|     new branch
+| 
+|  Events/Event.h        |  6 ++--
+|  Events/Monster.h      |  6 ++--
+|  MatamStory.cpp        | 38 ++++++++++-----------
+|  MatamStory.h          | 87 +++++++++++++++++++++++++------------------------
+|  Players/Character.cpp |  1 +
+|  Players/Character.h   | 10 +++---
+|  6 files changed, 76 insertions(+), 72 deletions(-)
+| 
+* commit 1d0e110caecb125425c494b4343dbb6aa8d4f6b1
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Fri Aug 9 14:10:08 2024 +0300
+| 
+|     update Character c'tors
+| 
+|  Players/Character.cpp | 17 +++++++++++++++++
+|  Players/Character.h   | 15 ++++++++++++++-
+|  2 files changed, 31 insertions(+), 1 deletion(-)
+| 
+* commit e3dcb1ea9a4f1b0ec4dd3ff95efb8cd68d7ac8b8
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Fri Aug 9 14:09:18 2024 +0300
+| 
+|     update Jobs c'tors
+| 
+|  Players/PlayersJobs.cpp | 36 ++++++++++++++++++++++++++++++++++--
+|  Players/PlayersJobs.h   | 15 +++++++++------
+|  2 files changed, 43 insertions(+), 8 deletions(-)
+| 
+* commit 6ca5c0058ef6c9661085cac5b2604cab13b90753
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Fri Aug 9 14:08:02 2024 +0300
+| 
+|     update Monster c'tors
+| 
+|  Events/Monster.cpp | 12 ++++++++----
+|  Events/Monster.h   |  6 +++---
+|  2 files changed, 11 insertions(+), 7 deletions(-)
+| 
+* commit aa4e7cefc644c4f75239a089c88768a28be3798b
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Fri Aug 9 13:51:08 2024 +0300
+| 
+|     update Events c'tors
+| 
+|  Events/Event.cpp | 11 +++++++++--
+|  Events/Event.h   |  6 +++---
+|  2 files changed, 12 insertions(+), 5 deletions(-)
+| 
+* commit 062f0214ef54dd2300741534562037c2c530735b
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Fri Aug 9 13:49:47 2024 +0300
+| 
+|     implement basic methods of player
+| 
+|  Players/Player.cpp | 44 ++++++++++++++++++++++++++++++++++++++++++++
+|  Players/Player.h   | 29 ++++++++++++++++++++++++++++-
+|  2 files changed, 72 insertions(+), 1 deletion(-)
+| 
+* commit 135f4e7f02ffdef0311d9cbad5ee1da08d08e989
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Fri Aug 9 13:48:50 2024 +0300
+| 
+|     update PlayerFactory
+| 
+|  Players/PlayerFactory.cpp | 35 +++++++++++++++++++----------------
+|  Players/PlayerFactory.h   |  4 ++--
+|  2 files changed, 21 insertions(+), 18 deletions(-)
+| 
+* commit f12cd48c92e61f531b84a898e57e01299b743076
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Fri Aug 9 13:48:17 2024 +0300
+| 
+|     update EventFactory
+| 
+|  Events/EventFactory.cpp | 44 ++++++++++++++++++--------------------------
+|  Events/EventFactory.h   |  2 +-
+|  2 files changed, 19 insertions(+), 27 deletions(-)
+| 
+* commit db3763df5f27f19d000ecf846ccf7dbade80b40e
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Thu Aug 8 23:38:56 2024 +0300
+| 
+|     open PlayerJobs
+| 
+|  Events/Monster.cpp        |  4 +++-
+|  Events/Monster.h          | 10 +++++-----
+|  Players/Character.cpp     |  0
+|  Players/PlayerFactory.cpp | 13 ++++++++-----
+|  Players/PlayerFactory.h   |  3 ++-
+|  Players/PlayersJobs.cpp   |  6 ++++++
+|  Players/PlayersJobs.h     | 20 ++++++++++++++++++++
+|  7 files changed, 44 insertions(+), 12 deletions(-)
+| 
+* commit 211f85311f0255224be9a981ce82acf2c4092054
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Thu Aug 8 23:06:38 2024 +0300
+| 
+|     dividing Factory to events and players
+| 
+|  Events/Event.cpp                       |  4 ++++
+|  Factory.cpp => Events/EventFactory.cpp | 24 +++---------------------
+|  Events/EventFactory.h                  | 14 ++++++++++++++
+|  Events/Monster.cpp                     | 29 +++++++++++++++++++++++++++++
+|  Events/Monster.h                       | 12 ++++++------
+|  Factory.h                              | 29 -----------------------------
+|  Players/PlayerFactory.cpp              | 22 ++++++++++++++++++++++
+|  Players/PlayerFactory.h                | 14 ++++++++++++++
+|  8 files changed, 92 insertions(+), 56 deletions(-)
+| 
+* commit 3b19112a44129690eeaf1ce8edd49b697180644e
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Thu Aug 8 22:48:29 2024 +0300
+| 
+|     try using Factory without map
+| 
+|  Factory.cpp | 53 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  Factory.h   | 29 +++++++++++++++++++++++++++++
+|  2 files changed, 82 insertions(+)
+| 
+* commit 062dfbd92bd2f8b803c33aca20badacbc37fe4e6
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Thu Aug 8 17:08:44 2024 +0300
+| 
+|     implement getDisc
+| 
+|  Events/Event.cpp   |  7 +++++++
+|  Events/Event.h     | 36 +++++++++++-------------------------
+|  Events/Monster.cpp |  8 ++++++++
+|  Events/Monster.h   | 11 ++++++++++-
+|  4 files changed, 36 insertions(+), 26 deletions(-)
+| 
+* commit 6900d0f1ed09eb6c825e11aed8720494ac912716
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Thu Aug 8 16:14:27 2024 +0300
+| 
+|     open Monster.h
+| 
+|  Events/Monster.h | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 47 insertions(+)
+| 
+* commit 068f2c42f86dec193c60d21d5c885aa17f85ccbd
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Thu Aug 8 15:50:44 2024 +0300
+| 
+|     open Event.h
+| 
+|  Events/Event.h | 44 +++++++++++++++++++++++++++++++++++++++++++-
+|  1 file changed, 43 insertions(+), 1 deletion(-)
+| 
+* commit 458756ee06465248b3944259951d951f3bfa6df1
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Thu Aug 8 15:34:01 2024 +0300
+| 
+|     loadin files
+| 
+|  MatamStory.cpp | 33 ++++++++++++++++++++++++++-------
+|  1 file changed, 26 insertions(+), 7 deletions(-)
+| 
+* commit 70cde6eb7ef876dd3352bef46887788eb5a01c50
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Wed Aug 7 19:02:48 2024 +0300
+| 
+|     update Character
+| 
+|  Players/Character.h | 7 ++++---
+|  1 file changed, 4 insertions(+), 3 deletions(-)
+| 
+* commit 2fd071eb2db11653ad16f5cedc4cf8145c0fb174
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Wed Aug 7 19:00:22 2024 +0300
+| 
+|     open Character
+| 
+|  Players/Character.h | 20 ++++++++++++++++++++
+|  Players/Player.h    |  3 +--
+|  2 files changed, 21 insertions(+), 2 deletions(-)
+| 
+* commit dcd2b032b23a1c602f7a0a40f114b8d1a8b1ad67
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Wed Aug 7 18:26:17 2024 +0300
+| 
+|     delete Job
+| 
+|  Players/Job.h | 9 ---------
+|  1 file changed, 9 deletions(-)
+| 
+* commit 7fae62194a2dde59b5eec162bfc3df933a813131
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Wed Aug 7 17:58:27 2024 +0300
+| 
+|     open Job
+| 
+|  Players/Job.h | 9 +++++++++
+|  1 file changed, 9 insertions(+)
+| 
+* commit 5c3359402dda876065e7302c8bea1018c7b599a8
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Wed Aug 7 17:37:34 2024 +0300
+| 
+|     Player attributes
+| 
+|  Players/Player.h | 91 ++++++++++++++++++++++++++++++------------------------
+|  1 file changed, 50 insertions(+), 41 deletions(-)
+| 
+* commit ecc9258c6f2aa2c9c091a7738587e206586a1c14
+| Author: Adi Harif <adi.harif@campus.technion.ac.il>
+| Date:   Sun Aug 4 08:16:59 2024 +0300
+| 
+|     [format] Changes tests eol format to LF instead of CRLF
+| 
+|  tests/test1.events  | 8 ++++----
+|  tests/test1.players | 4 ++--
+|  tests/test2.events  | 6 +++---
+|  tests/test2.players | 4 ++--
+|  tests/test3.events  | 8 ++++----
+|  tests/test3.players | 2 +-
+|  6 files changed, 16 insertions(+), 16 deletions(-)
+| 
+* commit 6d0b58bcecef6fc2291c09f654a978cc382c3e31
+| Author: AdiHarif <adi.harif@campus.technion.ac.il>
+| Date:   Mon Jul 29 21:47:45 2024 +0300
+| 
+|     Adds supplied files
+| 
+|  Events/Event.h       |  14 +++++
+|  MatamStory.cpp       |  74 +++++++++++++++++++++++++
+|  MatamStory.h         |  55 +++++++++++++++++++
+|  Players/Player.h     |  51 +++++++++++++++++
+|  Utilities.cpp        | 117 +++++++++++++++++++++++++++++++++++++++
+|  Utilities.h          | 146 +++++++++++++++++++++++++++++++++++++++++++++++++
+|  main.cpp             |  40 ++++++++++++++
+|  tests/test1.events   |   5 ++
+|  tests/test1.expected |  96 ++++++++++++++++++++++++++++++++
+|  tests/test1.players  |   3 +
+|  tests/test2.events   |   4 ++
+|  tests/test2.expected |   1 +
+|  tests/test2.players  |   3 +
+|  tests/test3.events   |   5 ++
+|  tests/test3.expected |   1 +
+|  tests/test3.players  |   2 +
+|  16 files changed, 617 insertions(+)
+| 
+* commit beadb33ed4c7dd2da9d4078b9de6253232c67a46
+  Author: AdiHarif <adi.harif@campus.technion.ac.il>
+  Date:   Mon Jul 29 21:46:59 2024 +0300
+  
+      Initial Commit - Adds README.md file
+  
+   README.md | 7 +++++++
+   1 file changed, 7 insertions(+)
