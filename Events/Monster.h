@@ -11,20 +11,54 @@ protected:
     int damage = 0;
 
 public:
+    /**
+     * c'tor
+     *
+     */
     Monster(const string &monsterName);
 
+    /**
+     * Gets the Description of the Monster
+     *
+     * @return - the Description of the Monster
+    */
     virtual string getDescription() const override;
 
+    /**
+     * applying the battle on player
+     *
+     * @param player
+     * @return - combat outcome
+    */
     virtual string applyEvent(Player &player) override;
 
     virtual void postBattle();
 
-    int getLoot() const override;
+    /**
+     * Gets the Loot of the Monster
+     *
+     * @return - the Loot of the Monster
+    */
+    int getLoot() const;
 
-    int getDamage() const override;
+    /**
+     * Gets the Damage of the Monster
+     *
+     * @return - the Damage of the Monster
+    */
+    int getDamage() const;
 
-    int getCombatPower() const override;
+    /**
+     * Gets the CombatPower of the Monster
+     *
+     * @return - the CombatPower of the Monster
+    */
+    int getCombatPower() const;
 
+    /**
+     * d'tor
+     *
+     */
     virtual ~Monster() override = default;
 };
 

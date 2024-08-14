@@ -26,25 +26,6 @@ public:
     virtual string applyEvent(Player &player) =0;
 
     /**
-    * while not Monster throw exception
-    *
-    */
-    virtual int getCombatPower() const;
-
-    /**
-    * while not Monster throw exception
-    *
-    */
-    virtual int getLoot() const;
-
-    /**
-    * while not Monster throw exception
-    *
-    */
-    virtual int getDamage() const;
-
-
-    /**
     * c'tor
     *
     *@param eventName

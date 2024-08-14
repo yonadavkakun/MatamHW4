@@ -88,13 +88,6 @@ bool Player::operator<(const Player &other) const {
         return this->name < other.name;
 }
 
-/*
-std::ostream &operator<<(std::ostream &os, const Player &player) {
-        os << player.getDescription() << std::endl;
-        return os;
-}
-*/
-
 string Player::potionPurchase() {
         return character->potionPurchase(*this);
 }

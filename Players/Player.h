@@ -100,28 +100,36 @@ public:
  /**
 * the player won, he gets the loot and level up
 *
-*@param monsterType
+*@param loot
 */
  void wonBattle(int loot);
 
  /**
 * the player lost, he lost HP as the monster damage
 *
-*@param monsterType
+*@param damage
 */
  void lostBattle(int damage);
 
-
+ /**
+  * the player experiences a solar eclipse, appropriate effects take place
+  *
+  * @return outcome (the effect on the player)
+  */
  string solarEclipseEffect();
 
 
  /**
-* operator<, less than, return true if other is greater than player
+* operator<, less than, return true if `other` should rank higher than `player`
 *
 *@param other
 */
  bool operator<(const Player &other) const;
 
+ /**
+* appropriate potion purchasing mechanics take place
+*
+*/
  string potionPurchase();
 };
 

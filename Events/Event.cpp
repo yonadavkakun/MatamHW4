@@ -10,19 +10,6 @@ string Event::getDescription() const {
     return name;
 }
 
-int Event::getDamage() const {
-    throw std::runtime_error("trying to add nonMonster to pack");
-}
-
-int Event::getLoot() const {
-    throw std::runtime_error("trying to add nonMonster to pack");
-}
-
-int Event::getCombatPower() const {
-    throw std::runtime_error("trying to add nonMonster to pack");
-}
-
-
 //SolarEclipse
 SolarEclipse::SolarEclipse(const string &eventName): Event(eventName) {
     name = "SolarEclipse";
