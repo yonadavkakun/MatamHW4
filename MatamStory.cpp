@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <memory>
 #include <memory>
+#include <memory>
 #include "Utilities.h"
 #include "Events/EventFactory.h"
 
@@ -27,7 +28,7 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
 }
 
 void MatamStory::playTurn(Player &player) {
-    currEvent = events[(m_turnIndex - 1) % events.size()];
+    currEvent = events[(m_turnIndex - 1) % events.size()].get();
     printTurnDetails(m_turnIndex, player, *currEvent);
     printTurnOutcome(currEvent->applyEvent(player));
     m_turnIndex++;
@@ -36,7 +37,7 @@ void MatamStory::playTurn(Player &player) {
 void MatamStory::playRound() {
     printRoundStart();
 
-    for (std::vector<std::shared_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
+    for (std::vector<std::unique_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
         if (it.operator*()->getHealthPoints() != 0) {
             playTurn(**it);
         }
@@ -46,14 +47,19 @@ void MatamStory::playRound() {
     printRoundEnd();
 
     printLeaderBoardMessage();
+    //std::vector<std::unique_ptr<Player> > sortedPlayers = players;
+    std::vector<Player *> sortedPlayers;
+    for (const std::unique_ptr<Player> &player: players) {
+        sortedPlayers.push_back(player.get());
+    }
 
-    std::vector<std::shared_ptr<Player> > sortedPlayers = players;
     std::sort(sortedPlayers.begin(), sortedPlayers.end(),
-              [](const std::shared_ptr<Player> &a, const std::shared_ptr<Player> &b) {
+              [](const Player *a, const Player *b) {
                   return *a < *b;
               });
     unsigned int counter = 1;
-    for (std::vector<std::shared_ptr<Player> >::iterator it = sortedPlayers.begin(); it != sortedPlayers.end(); ++it) {
+    for (std::vector<Player *>::iterator it = sortedPlayers.begin(); it != sortedPlayers.end(); ++
+         it) {
         printLeaderBoardEntry(counter, **it);
         counter++;
     }
@@ -66,18 +72,22 @@ void MatamStory::playRound() {
 bool MatamStory::isGameOver() const {
     /*===== TODO: Implement the game over condition =====*/
     bool hasLevel10Player = std::any_of(players.begin(), players.end(),
-                                        [](const std::shared_ptr<Player> &player) {
+                                        [](const std::unique_ptr<Player> &player) {
                                             return player->getLevel() == 10;
                                         });
 
     bool allPlayersHealthZero = std::all_of(players.begin(), players.end(),
-                                            [](const std::shared_ptr<Player> &player) {
+                                            [](const std::unique_ptr<Player> &player) {
                                                 return player->getHealthPoints() == 0;
                                             });
     if (hasLevel10Player) {
-        std::vector<std::shared_ptr<Player> > sortedPlayers = players;
+        std::vector<Player *> sortedPlayers;
+        for (const std::unique_ptr<Player> &player: players) {
+            sortedPlayers.push_back(player.get());
+        }
+
         std::sort(sortedPlayers.begin(), sortedPlayers.end(),
-                  [](const std::shared_ptr<Player> &a, const std::shared_ptr<Player> &b) {
+                  [](const Player *a, const Player *b) {
                       return *a < *b;
                   });
         printGameOver();
@@ -96,7 +106,7 @@ bool MatamStory::isGameOver() const {
 void MatamStory::play() {
     printStartMessage();
     unsigned int counter = 1;
-    for (std::vector<std::shared_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
+    for (std::vector<std::unique_ptr<Player> >::iterator it = players.begin(); it != players.end(); ++it) {
         printStartPlayerEntry(counter, **it);
         counter++;
     }

@@ -26,7 +26,6 @@ public:
  /**
   * sets the current level of the player
   *
-  * @return - level of the player
  */
  void setLevel(int amount);
 
@@ -38,10 +37,9 @@ public:
  int getForce() const;
 
  /**
-     * sets the of force the player has
-     *
-     * @return - force points of the player
-    */
+  * sets the of force the player has
+  *
+ */
  void setForce(int amount);
 
  /**
@@ -54,7 +52,6 @@ public:
  /**
  * sets the amount of health points the player currently has
  *
- * @return - health points of the player
 */
  void setHealthPoints(int amount);
 
@@ -68,7 +65,6 @@ public:
  /**
  * sets the Max health points of the player
  *
- * @return - max health points of the player
 */
  void setMaxHealthPoints(int amount);
 
@@ -82,7 +78,6 @@ public:
  /**
  * sets the amount of coins the player has
  *
- * @return - coins of the player
 */
  void setCoins(int amount);
 };

@@ -10,13 +10,13 @@ using std::string;
 
 class JobFactory {
 public:
-    using JobCreator = std::function<std::shared_ptr<Job>()>;
+    using JobCreator = std::function<std::unique_ptr<Job>()>;
     /**
-     * creates a shared_ptr to a job in accordance with jobType
+     * creates a unique_ptr to a job in accordance with jobType
      * throws an exception if a job is invalid
      *
      * @param jobType, stats
-     * @return shared_ptr<Job> job
+     * @return unique_ptr<Job> job
      */
-    static std::shared_ptr<Job> createJob(const std::string &jobType, std::shared_ptr<Stats> stats);
+    static std::unique_ptr<Job> createJob(const std::string &jobType, Stats *stats);
 };

@@ -83,7 +83,7 @@ void Balrog::postBattle() {
 //pack
 Pack::Pack(std::istream &eventsStream) : Monster("Pack") {
     eventsStream >> packSize;
-    if (packSize < 0) {
+    if (packSize < 2) {
         throw std::runtime_error("Invalid Events File");
     }
     for (int i = 0; i < packSize; i++) {

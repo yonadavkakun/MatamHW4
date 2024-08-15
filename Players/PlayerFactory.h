@@ -7,11 +7,11 @@
 class PlayerFactory {
 public:
     /**
-     * creates a shared_ptr to a player in playersStream
+     * creates a unique_ptr to a player in playersStream
      * throws an exception if a player is invalid
      *
      * @param playersStream
-     * @return shared_ptr<Player> player
+     * @return unique_ptr<Player> player
      */
-    static std::shared_ptr<Player> createPlayer(std::istream &playersStream);
+    static std::unique_ptr<Player> createPlayer(std::istream &playersStream);
 };

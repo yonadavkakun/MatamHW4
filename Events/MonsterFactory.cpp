@@ -1,13 +1,13 @@
 #include "MonsterFactory.h"
 
-std::shared_ptr<Monster> MonsterFactory::createMonster(std::istream &eventsStream) {
+std::unique_ptr<Monster> MonsterFactory::createMonster(std::istream &eventsStream) {
     string monsterType;
     eventsStream >> monsterType;
     const static std::map<std::string, MonsterCreator> MonsterMap = {
-        {string("Snail"), [&]() { return std::make_shared<Snail>(); }},
-        {string("Slime"), [&]() { return std::make_shared<Slime>(); }},
-        {string("Balrog"), [&]() { return std::make_shared<Balrog>(); }},
-        {string("Pack"), [&]() { return std::make_shared<Pack>(eventsStream); }},
+        {string("Snail"), [&]() { return std::make_unique<Snail>(); }},
+        {string("Slime"), [&]() { return std::make_unique<Slime>(); }},
+        {string("Balrog"), [&]() { return std::make_unique<Balrog>(); }},
+        {string("Pack"), [&]() { return std::make_unique<Pack>(eventsStream); }},
     };
 
     auto it = MonsterMap.find(monsterType);

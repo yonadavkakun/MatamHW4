@@ -11,14 +11,14 @@ using std::string;
 class Player {
 protected:
  string name;
- std::shared_ptr<Stats> stats;
- std::shared_ptr<Job> job;
- std::shared_ptr<Character> character;
+ std::unique_ptr<Stats> stats;
+ std::unique_ptr<Job> job;
+ std::unique_ptr<Character> character;
 
 public:
  //c'tor
- Player(const string &playerName, std::shared_ptr<Stats> playerStats, std::shared_ptr<Job> jobType,
-        std::shared_ptr<Character> charType);
+ Player(const string &playerName, std::unique_ptr<Stats> playerStats, std::unique_ptr<Job> jobType,
+        std::unique_ptr<Character> charType);
 
 
  /**

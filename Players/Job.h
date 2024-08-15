@@ -27,28 +27,28 @@ public:
   * @param playerStats
   * @return -1 (force-increment as defined in assignment)
   */
- virtual int solarEclipseEffect(std::shared_ptr<Stats> playerStats);
+ virtual int solarEclipseEffect(Stats &playerStats);
 
  /**
  * Gets the CombatPower of the player as int
  *
  * @return - CombatPower of the player
  */
- virtual int getCombatPower(std::shared_ptr<Stats> playerStats) const;
+ virtual int getCombatPower(Stats &playerStats) const;
 
  /**
  * the player won, he gets the loot and level up
  *
  *@param loot
  */
- virtual void wonBattle(int loot, std::shared_ptr<Stats> playerStats);
+ virtual void wonBattle(int loot, Stats &playerStats);
 
  /**
 * the player lost, he lost HP as the monster damage
 *
 *@param damage
 */
- virtual void lostBattle(int damage, std::shared_ptr<Stats> playerStats);
+ virtual void lostBattle(int damage, Stats &playerStats);
 
  virtual ~Job() = default;
 };
@@ -61,21 +61,21 @@ public:
   * @param jobName
   * @param playerStats
   */
- Warrior(const string &jobName, std::shared_ptr<Stats> playerStats);
+ Warrior(const string &jobName, Stats &playerStats);
 
  /**
   * combatPower getter function
   * @param playerStats
   * @return combatPower
   */
- int getCombatPower(std::shared_ptr<Stats> playerStats) const override;
+ int getCombatPower(Stats &playerStats) const override;
 
  /**
   * HP is dropped by 10. level goes up by 1. coins are increased by monster's loot
   * @param loot
   * @param playerStats
   */
- void wonBattle(int loot, std::shared_ptr<Stats> playerStats) override;
+ void wonBattle(int loot, Stats &playerStats) override;
 
  /**
   * job getter
@@ -97,7 +97,7 @@ public:
   * @param jobName
   * @param playerStats
   */
- Archer(const string &jobName, std::shared_ptr<Stats> playerStats);
+ Archer(const string &jobName, Stats &playerStats);
 
  /**
   * job getter
@@ -131,7 +131,7 @@ public:
   * @param playerStats
   * @return 1 (force-increment as defined in assignment)
   */
- int solarEclipseEffect(std::shared_ptr<Stats> playerStats) override;
+ int solarEclipseEffect(Stats &playerStats) override;
 
  /**
   * c`tor

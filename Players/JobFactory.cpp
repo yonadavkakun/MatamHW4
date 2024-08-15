@@ -1,10 +1,10 @@
 #include "JobFactory.h"
 
-std::shared_ptr<Job> JobFactory::createJob(const std::string &jobType, std::shared_ptr<Stats> stats) {
+std::unique_ptr<Job> JobFactory::createJob(const std::string &jobType, Stats *stats) {
     const static std::map<std::string, JobCreator> jobMap = {
-        {string("Warrior"), [&]() { return std::make_shared<Warrior>(jobType, stats); }},
-        {string("Archer"), [&]() { return std::make_shared<Archer>(jobType, stats); }},
-        {string("Magician"), [&]() { return std::make_shared<Magician>(jobType); }}
+        {string("Warrior"), [&]() { return std::make_unique<Warrior>(jobType, *stats); }},
+        {string("Archer"), [&]() { return std::make_unique<Archer>(jobType, *stats); }},
+        {string("Magician"), [&]() { return std::make_unique<Magician>(jobType); }}
     };
 
     auto it = jobMap.find(jobType);

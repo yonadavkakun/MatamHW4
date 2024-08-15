@@ -7,12 +7,12 @@
 
 
 Player::Player(const string &playerName,
-               std::shared_ptr<Stats> playerStats,
-               std::shared_ptr<Job> jobType,
-               std::shared_ptr<Character> charType): name(playerName),
-                                                     stats(playerStats),
-                                                     job(jobType),
-                                                     character(charType) {
+               std::unique_ptr<Stats> playerStats,
+               std::unique_ptr<Job> jobType,
+               std::unique_ptr<Character> charType): name(playerName),
+                                                     stats(std::move(playerStats)),
+                                                     job(std::move(jobType)),
+                                                     character(std::move(charType)) {
 }
 
 int Player::getCoins() const {
@@ -63,19 +63,19 @@ void Player::buySinglePotion() {
 
 
 int Player::getCombatPower() const {
-        return job->getCombatPower(stats);
+        return job->getCombatPower(*stats);
 }
 
 void Player::wonBattle(int loot) {
-        job->wonBattle(loot, stats);
+        job->wonBattle(loot, *stats);
 }
 
 void Player::lostBattle(int damage) {
-        job->lostBattle(damage, stats);
+        job->lostBattle(damage, *stats);
 }
 
 string Player::solarEclipseEffect() {
-        return getSolarEclipseMessage(*this, job->solarEclipseEffect(stats));
+        return getSolarEclipseMessage(*this, job->solarEclipseEffect(*stats));
 }
 
 bool Player::operator<(const Player &other) const {
