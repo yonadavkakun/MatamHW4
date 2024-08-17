@@ -39,8 +39,9 @@ public:
  /**
   * sets the of force the player has
   *
+  * @return - the change in the force points
  */
- void setForce(int amount);
+ int setForce(int amount);
 
  /**
   * Gets the amount of health points the player currently has

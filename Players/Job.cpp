@@ -5,8 +5,7 @@ Job::Job(const string &jobName) : jobName(jobName) {
 }
 
 int Job::solarEclipseEffect(Stats &playerStats) {
-    playerStats.setForce(-1);
-    return -1;
+    return playerStats.setForce(-1);
 }
 
 void Job::wonBattle(int loot, Stats &playerStats) {

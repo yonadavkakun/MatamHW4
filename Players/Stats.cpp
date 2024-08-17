@@ -30,11 +30,13 @@ void Stats::setCoins(int amount) {
     }
 }
 
-void Stats::setForce(int amount) {
-    force += amount;
-    if (force < 0) {
+int Stats::setForce(int amount) {
+    if (force <= 0) {
         force = 0;
+        return 0;
     }
+    force += amount;
+    return amount;
 }
 
 void Stats::setLevel(int amount) {
