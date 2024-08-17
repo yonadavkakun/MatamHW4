@@ -1,3 +1,59 @@
+* commit 62486b18851374f8f605203c6c7373e8c4576592
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sat Aug 17 23:02:18 2024 +0300
+| 
+|     updating playerName checking
+| 
+|  Players/PlayerFactory.cpp | 8 +-------
+|  1 file changed, 1 insertion(+), 7 deletions(-)
+| 
+* commit 5b6d687156ec0330d9f5c5738fc7897e0ec140e9
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sat Aug 17 22:58:49 2024 +0300
+| 
+|     debugging negative force test
+| 
+|  Players/Job.cpp   | 3 +--
+|  Players/Stats.cpp | 8 +++++---
+|  Players/Stats.h   | 3 ++-
+|  3 files changed, 8 insertions(+), 6 deletions(-)
+| 
+* commit 009964a9327f1b7dcfddad12703b7ab727231d4f
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Thu Aug 15 17:08:15 2024 +0300
+| 
+|     change from shared_ptr to unique_prt
+| 
+|  Events/EventFactory.cpp      | 14 +++++++-------
+|  Events/EventFactory.h        |  6 +++---
+|  Events/Monster.cpp           |  2 +-
+|  Events/MonsterFactory.cpp    | 10 +++++-----
+|  Events/MonsterFactory.h      |  8 ++++----
+|  MatamStory.cpp               | 30 ++++++++++++++++++----------
+|  MatamStory.h                 |  6 +++---
+|  Players/CharacterFactory.cpp |  6 +++---
+|  Players/CharacterFactory.h   |  8 ++++----
+|  Players/Job.cpp              | 44 +++++++++++++++++++++---------------------
+|  Players/Job.h                | 18 ++++++++---------
+|  Players/JobFactory.cpp       |  8 ++++----
+|  Players/JobFactory.h         |  8 ++++----
+|  Players/Player.cpp           | 20 +++++++++----------
+|  Players/Player.h             | 10 +++++-----
+|  Players/PlayerFactory.cpp    |  8 ++++----
+|  Players/PlayerFactory.h      |  6 +++---
+|  Players/Stats.h              | 11 +++--------
+|  18 files changed, 114 insertions(+), 109 deletions(-)
+| 
+* commit 5eeca912c4b34a46cd6d44e93ca56f0b08654793
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Wed Aug 14 19:04:56 2024 +0300
+| 
+|     adding dry and log
+| 
+|  dry.pdf | Bin 0 -> 431830 bytes
+|  log.txt | 629 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  2 files changed, 629 insertions(+)
+| 
 * commit ab75ed9f0c45e193a975b83517a98c39679aad2b
 | Author: yonadavkakun <yonadav4321@gmail.com>
 | Date:   Wed Aug 14 17:36:17 2024 +0300
