@@ -14,14 +14,14 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
     while (!eventsStream.eof()) {
         events.push_back(EventFactory::createEvent(eventsStream));
     }
-    if (events.size() < 2) {
+    if (events.size() < MIN_EVENTS) {
         throw std::runtime_error("Invalid Events File");
     }
     /*============================================*/
     while (!playersStream.eof()) {
         players.push_back(PlayerFactory::createPlayer(playersStream));
     }
-    if (players.size() < 2 || players.size() > 6) {
+    if (players.size() < MIN_PLAYERS || players.size() > MAX_PLAYERS) {
         throw std::runtime_error("Invalid Players File");
     }
     this->m_turnIndex = 1;

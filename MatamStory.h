@@ -9,6 +9,9 @@
 
 class MatamStory {
 private:
+ static const int MAX_PLAYERS = 6;
+ static const int MIN_PLAYERS = 2;
+ static const int MIN_EVENTS = 2;
  unsigned int m_turnIndex;
  std::vector<std::unique_ptr<Event> > events;
  std::vector<std::unique_ptr<Player> > players;
