@@ -66,11 +66,11 @@ int Player::getCombatPower() const {
         return job->getCombatPower(*stats);
 }
 
-void Player::wonBattle(int loot) const {
+void Player::wonBattle(const int loot) const {
         job->wonBattle(loot, *stats);
 }
 
-void Player::lostBattle(int damage) const {
+void Player::lostBattle(const int damage) const {
         job->lostBattle(damage, *stats);
 }
 

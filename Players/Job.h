@@ -27,7 +27,7 @@ public:
   * @param playerStats
   * @return -1 (force-increment as defined in assignment)
   */
- virtual int solarEclipseEffect(Stats &playerStats);
+ virtual int solarEclipseEffect(Stats &playerStats) const;
 
  /**
  * Gets the CombatPower of the player as int
@@ -41,14 +41,14 @@ public:
  *
  *@param loot
  */
- virtual void wonBattle(int loot, Stats &playerStats);
+ virtual void wonBattle(const int loot, Stats &playerStats) const;
 
  /**
 * the player lost, he lost HP as the monster damage
 *
 *@param damage
 */
- virtual void lostBattle(int damage, Stats &playerStats);
+ virtual void lostBattle(const int damage, Stats &playerStats) const;
 
  virtual ~Job() = default;
 };
@@ -75,7 +75,7 @@ public:
   * @param loot
   * @param playerStats
   */
- void wonBattle(int loot, Stats &playerStats) override;
+ void wonBattle(const int loot, Stats &playerStats) const override;
 
  /**
   * job getter
@@ -131,7 +131,7 @@ public:
   * @param playerStats
   * @return 1 (force-increment as defined in assignment)
   */
- int solarEclipseEffect(Stats &playerStats) override;
+ int solarEclipseEffect(Stats &playerStats) const override;
 
  /**
   * c`tor

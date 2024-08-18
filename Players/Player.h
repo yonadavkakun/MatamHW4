@@ -102,14 +102,14 @@ public:
 *
 *@param loot
 */
- void wonBattle(int loot) const;
+ void wonBattle(const int loot) const;
 
  /**
 * the player lost, he lost HP as the monster damage
 *
 *@param damage
 */
- void lostBattle(int damage) const;
+ void lostBattle(const int damage) const;
 
  /**
   * the player experiences a solar eclipse, appropriate effects take place

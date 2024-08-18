@@ -4,16 +4,16 @@
 Job::Job(const string &jobName) : jobName(jobName) {
 }
 
-int Job::solarEclipseEffect(Stats &playerStats) {
+int Job::solarEclipseEffect(Stats &playerStats) const {
     return playerStats.setForce(-1);
 }
 
-void Job::wonBattle(int loot, Stats &playerStats) {
+void Job::wonBattle(const int loot, Stats &playerStats) const {
     playerStats.setCoins(loot);
     playerStats.setLevel(1);
 }
 
-void Job::lostBattle(int damage, Stats &playerStats) {
+void Job::lostBattle(const int damage, Stats &playerStats) const {
     playerStats.setHealthPoints(-damage);
 }
 
@@ -32,7 +32,7 @@ string Warrior::getJob() const {
     return jobName;
 }
 
-void Warrior::wonBattle(int loot, Stats &playerStats) {
+void Warrior::wonBattle(const int loot, Stats &playerStats) const {
     playerStats.setCoins(loot);
     playerStats.setLevel(1);
     playerStats.setHealthPoints(-10);
@@ -61,7 +61,7 @@ string Magician::getJob() const {
     return jobName;
 }
 
-int Magician::solarEclipseEffect(Stats &playerStats) {
+int Magician::solarEclipseEffect(Stats &playerStats) const {
     playerStats.setForce(1);
     return 1;
 }
