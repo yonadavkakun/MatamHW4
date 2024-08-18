@@ -88,7 +88,7 @@ public:
 * buy a potion for the player, 5 coins for 10 HP
 *
 */
- void buySinglePotion();
+ void buySinglePotion() const;
 
  /**
 * Gets the CombatPower of the player as int
@@ -102,21 +102,21 @@ public:
 *
 *@param loot
 */
- void wonBattle(int loot);
+ void wonBattle(int loot) const;
 
  /**
 * the player lost, he lost HP as the monster damage
 *
 *@param damage
 */
- void lostBattle(int damage);
+ void lostBattle(int damage) const;
 
  /**
   * the player experiences a solar eclipse, appropriate effects take place
   *
   * @return outcome (the effect on the player)
   */
- string solarEclipseEffect();
+ string solarEclipseEffect() const;
 
 
  /**

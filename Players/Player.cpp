@@ -56,7 +56,7 @@ string Player::getCharacter() const {
         return character->getCharacter();
 }
 
-void Player::buySinglePotion() {
+void Player::buySinglePotion() const {
         stats->setCoins(-5);
         stats->setHealthPoints(10);
 }
@@ -66,15 +66,15 @@ int Player::getCombatPower() const {
         return job->getCombatPower(*stats);
 }
 
-void Player::wonBattle(int loot) {
+void Player::wonBattle(int loot) const {
         job->wonBattle(loot, *stats);
 }
 
-void Player::lostBattle(int damage) {
+void Player::lostBattle(int damage) const {
         job->lostBattle(damage, *stats);
 }
 
-string Player::solarEclipseEffect() {
+string Player::solarEclipseEffect() const {
         return getSolarEclipseMessage(*this, job->solarEclipseEffect(*stats));
 }
 
