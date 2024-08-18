@@ -1,6 +1,10 @@
 #include "Stats.h"
 
-Stats::Stats() : level(1), force(5), currHealthPoints(100), maxHealthPoints(100), coins(10) {
+Stats::Stats() : level(STARTING_LEVEL),
+                 force(STARTING_FORCE),
+                 currHealthPoints(STARTING_CURR_HP),
+                 maxHealthPoints(STARTING_MAX_HP),
+                 coins(STARTING_COINS) {
 }
 
 int Stats::getCoins() const {

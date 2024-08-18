@@ -2,6 +2,11 @@
 
 
 class Stats {
+ static const int STARTING_LEVEL = 1;
+ static const int STARTING_FORCE = 5;
+ static const int STARTING_CURR_HP = 100;
+ static const int STARTING_MAX_HP = 100;
+ static const int STARTING_COINS = 10;
  int level;
  int force;
  int currHealthPoints;
