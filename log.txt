@@ -1,3 +1,71 @@
+* commit 479557355369e6818967abdf452a75001231e08f
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 22:09:13 2024 +0300
+| 
+|     change pack to unique ptr vector
+| 
+|  Events/Monster.cpp | 6 +++---
+|  Events/Monster.h   | 2 +-
+|  2 files changed, 4 insertions(+), 4 deletions(-)
+| 
+* commit b4b313867c8b875988cdaccefcc18d5f9669d314
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 21:52:26 2024 +0300
+| 
+|     adding magic numbers to Pack
+| 
+|  Events/Monster.cpp | 2 +-
+|  Events/Monster.h   | 1 +
+|  2 files changed, 2 insertions(+), 1 deletion(-)
+| 
+* commit f9b8122a30eebfaf9ebedcee4fd3ad9312ecb9ce
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 21:48:17 2024 +0300
+| 
+|     adding magic numbers to PlayerFactory
+| 
+|  Players/PlayerFactory.cpp | 2 +-
+|  Players/PlayerFactory.h   | 3 +++
+|  2 files changed, 4 insertions(+), 1 deletion(-)
+| 
+* commit bc21b19d166d425ff1aa4140ace78d29aadb7f7c
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 21:46:25 2024 +0300
+| 
+|     adding magic numbers to Stats
+| 
+|  Players/Stats.cpp | 6 +++++-
+|  Players/Stats.h   | 5 +++++
+|  2 files changed, 10 insertions(+), 1 deletion(-)
+| 
+* commit 4a832f9446d64b1da4f12512e6c8015951e45f34
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 21:41:08 2024 +0300
+| 
+|     adding magic numbers to MatamStory
+| 
+|  MatamStory.cpp | 4 ++--
+|  MatamStory.h   | 3 +++
+|  2 files changed, 5 insertions(+), 2 deletions(-)
+| 
+* commit c6a4f7276fd42255fadeea706788fd39b2b96e90
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 10:25:06 2024 +0300
+| 
+|     updating dry.pdf
+| 
+|  dry.pdf | Bin 431830 -> 433083 bytes
+|  1 file changed, 0 insertions(+), 0 deletions(-)
+| 
+* commit 68c8732c2e3f935174cacca2dae5dbe95cc7fc29
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sat Aug 17 23:15:46 2024 +0300
+| 
+|     updating log.txt
+| 
+|  log.txt | 56 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 56 insertions(+)
+| 
 * commit 62486b18851374f8f605203c6c7373e8c4576592
 | Author: yonadavkakun <yonadav4321@gmail.com>
 | Date:   Sat Aug 17 23:02:18 2024 +0300
