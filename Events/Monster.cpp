@@ -89,7 +89,7 @@ Pack::Pack(std::istream &eventsStream) : Monster("Pack") {
     for (int i = 0; i < packSize; i++) {
         pack.push_back(MonsterFactory::createMonster(eventsStream));
     }
-    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+    for (std::vector<std::unique_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
         damage += it.operator*()->getDamage();
@@ -108,7 +108,7 @@ string Pack::applyEvent(Player &player) {
     combatPower = 0;
     loot = 0;
     damage = 0;
-    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+    for (std::vector<std::unique_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
         it.operator*()->postBattle();
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();
@@ -127,7 +127,7 @@ void Pack::postBattle() {
     combatPower = 0;
     loot = 0;
     damage = 0;
-    for (std::vector<std::shared_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
+    for (std::vector<std::unique_ptr<Monster> >::iterator it = pack.begin(); it != pack.end(); ++it) {
         it.operator*()->postBattle();
         combatPower += it.operator*()->getCombatPower();
         loot += it.operator*()->getLoot();

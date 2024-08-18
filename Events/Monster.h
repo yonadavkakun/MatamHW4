@@ -90,7 +90,7 @@ public:
 class Pack : public Monster {
     static const int MIN_PACK_SIZE = 2;
     int packSize = 0;
-    std::vector<std::shared_ptr<Monster> > pack;
+    std::vector<std::unique_ptr<Monster> > pack;
 
 public:
     Pack(std::istream &eventsStream);
