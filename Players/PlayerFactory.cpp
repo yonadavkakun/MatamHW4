@@ -4,7 +4,7 @@ std::unique_ptr<Player> PlayerFactory::createPlayer(std::istream &playersStream)
     string playerName, playerJob, playerCharacter;
     playersStream >> playerName >> playerJob >> playerCharacter;
     int nameSize = playerName.size();
-    if (nameSize > 15 || nameSize < 3) {
+    if (nameSize > MAX_NAME_SIZE || nameSize < MIN_NAME_SIZE) {
         throw std::runtime_error("Invalid Players File");
     }
     std::unique_ptr<Stats> stats = std::make_unique<Stats>();
