@@ -1,3 +1,57 @@
+* commit 2b45e6f6e937976827bc8504088d54c6fd2a1f1d
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Mon Aug 19 10:01:28 2024 +0300
+| 
+|     remove comments
+| 
+|  Events/Event.cpp    | 1 -
+|  Events/Event.h      | 1 -
+|  Events/Monster.h    | 3 ---
+|  MatamStory.cpp      | 8 --------
+|  Players/Character.h | 1 -
+|  Players/Job.h       | 3 ++-
+|  6 files changed, 2 insertions(+), 15 deletions(-)
+| 
+* commit 3e0d5d945f0e33f1581e6c36a0fe34872d47227e
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Mon Aug 19 00:09:12 2024 +0300
+| 
+|     update const methods in Player
+| 
+|  Players/Job.cpp    | 10 +++++-----
+|  Players/Job.h      | 10 +++++-----
+|  Players/Player.cpp |  4 ++--
+|  Players/Player.h   |  4 ++--
+|  4 files changed, 14 insertions(+), 14 deletions(-)
+| 
+* commit e75184fffbce485013d8ae43265b6deda2b6478b
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 23:58:50 2024 +0300
+| 
+|     const methods
+| 
+|  Players/Player.cpp | 8 ++++----
+|  Players/Player.h   | 8 ++++----
+|  2 files changed, 8 insertions(+), 8 deletions(-)
+| 
+* commit 4307d18ae7b11fa65469f171106920db473681e2
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 22:10:19 2024 +0300
+| 
+|     adding log
+| 
+|  log.txt | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 68 insertions(+)
+| 
+* commit 537cd6678951a7fc9e76efb10b3e3a42c5f53557
+| Author: yonadavkakun <yonadav4321@gmail.com>
+| Date:   Sun Aug 18 22:09:43 2024 +0300
+| 
+|     adding dry and log
+| 
+|  dry.pdf | Bin 433083 -> 504666 bytes
+|  1 file changed, 0 insertions(+), 0 deletions(-)
+| 
 * commit 479557355369e6818967abdf452a75001231e08f
 | Author: yonadavkakun <yonadav4321@gmail.com>
 | Date:   Sun Aug 18 22:09:13 2024 +0300
