@@ -1,9 +1,6 @@
 #pragma once
 #include "Event.h"
 
-//class Player;
-
-
 class Monster : public Event {
 protected:
     int combatPower = 0;

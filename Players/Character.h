@@ -3,7 +3,6 @@
 
 class Player;
 
-
 class Character {
  std::string character;
 

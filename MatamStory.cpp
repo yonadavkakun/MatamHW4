@@ -17,7 +17,6 @@ MatamStory::MatamStory(std::istream &eventsStream, std::istream &playersStream) 
     if (events.size() < MIN_EVENTS) {
         throw std::runtime_error("Invalid Events File");
     }
-    /*============================================*/
     while (!playersStream.eof()) {
         players.push_back(PlayerFactory::createPlayer(playersStream));
     }
@@ -42,12 +41,10 @@ void MatamStory::playRound() {
             playTurn(**it);
         }
     }
-    /*=============================================*/
 
     printRoundEnd();
 
     printLeaderBoardMessage();
-    //std::vector<std::unique_ptr<Player> > sortedPlayers = players;
     std::vector<Player *> sortedPlayers;
     for (const std::unique_ptr<Player> &player: players) {
         sortedPlayers.push_back(player.get());
@@ -64,13 +61,11 @@ void MatamStory::playRound() {
         counter++;
     }
 
-    /*=======================================================================================*/
 
     printBarrier();
 }
 
 bool MatamStory::isGameOver() const {
-    /*===== TODO: Implement the game over condition =====*/
     bool hasLevel10Player = std::any_of(players.begin(), players.end(),
                                         [](const std::unique_ptr<Player> &player) {
                                             return player->getLevel() == 10;
@@ -100,7 +95,6 @@ bool MatamStory::isGameOver() const {
     } else {
         return false;
     }
-    /*===================================================*/
 }
 
 void MatamStory::play() {
@@ -110,11 +104,9 @@ void MatamStory::play() {
         printStartPlayerEntry(counter, **it);
         counter++;
     }
-    /*=========================================================================================*/
     printBarrier();
 
     while (!isGameOver()) {
         playRound();
     }
-    /*========================================================================*/
 }

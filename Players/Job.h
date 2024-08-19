@@ -1,7 +1,6 @@
 #pragma once
 #include <memory>
 #include <string>
-
 #include "Stats.h"
 using std::string;
 
@@ -40,6 +39,7 @@ public:
  * the player won, he gets the loot and level up
  *
  *@param loot
+ *@param playerStats
  */
  virtual void wonBattle(const int loot, Stats &playerStats) const;
 
@@ -47,6 +47,7 @@ public:
 * the player lost, he lost HP as the monster damage
 *
 *@param damage
+*@param playerStats
 */
  virtual void lostBattle(const int damage, Stats &playerStats) const;
 
