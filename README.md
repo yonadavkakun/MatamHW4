@@ -20,6 +20,7 @@
 
 ---
 Run the compilation command **from the project root** 
+
 g++ --std=c++17 -o MatamStory -Wall -pedantic-errors -Werror -DNDEBUG *.cpp Events/*.cpp Players/*.cpp -I. -I./Players -I./Events
 # run the game with example input files
 ./MatamStory tests/test1.events tests/test2.players > test1.out
